@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  @include glass-effect;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $gradient-primary;
+    transform: scaleX(0);
+    transition: transform $transition-base;
+    border-radius: $border-radius-xl $border-radius-xl 0 0;
+  }
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: $color-primary;
+    box-shadow: $shadow-xl;
+    
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+  
+  .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: $border-radius-lg;
+    @include flex-center;
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-md;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: $border-radius-lg;
+      background: $gradient-primary;
+      opacity: 0.1;
+    }
+  }
+  
+  .title {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-sm;
+    font-family: $font-heading;
+  }
+  
+  .description {
+    color: $color-text-muted;
+    line-height: 1.7;
+    margin: 0;
+  }
+}

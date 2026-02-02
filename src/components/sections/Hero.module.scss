@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  min-height: 100vh;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+  
+  .canvas {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    opacity: 0.6;
+    
+    @media (max-width: $breakpoint-md) {
+      right: -200px;
+      opacity: 0.3;
+    }
+  }
+  
+  .content {
+    @include container;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+  }
+  
+  .title {
+    font-size: clamp(2.5rem, 8vw, $font-size-6xl);
+    margin-bottom: $spacing-lg;
+    line-height: 1.1;
+    
+    .gradient {
+      @include text-gradient;
+    }
+  }
+  
+  .subtitle {
+    font-size: clamp($font-size-lg, 3vw, $font-size-xl);
+    color: $color-text-secondary;
+    margin-bottom: $spacing-2xl;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

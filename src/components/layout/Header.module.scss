@@ -1,0 +1,134 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-header;
+  @include glass-effect(0.8, 12px);
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+  transition: all $transition-base;
+  
+  &.scrolled {
+    box-shadow: $shadow-md;
+  }
+  
+  .nav {
+    @include container;
+    @include flex-between;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+  }
+  
+  .logo {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: 700;
+    @include text-gradient;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+  }
+  
+  .navLinks {
+    display: none;
+    gap: $spacing-lg;
+    list-style: none;
+    
+    @include respond-to(md) {
+      display: flex;
+    }
+    
+    &.active {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba($color-bg-primary, 0.98);
+      backdrop-filter: blur(12px);
+      padding: $spacing-lg;
+      border-bottom: 1px solid rgba($color-primary, 0.1);
+      
+      @include respond-to(md) {
+        position: static;
+        flex-direction: row;
+        background: none;
+        backdrop-filter: none;
+        padding: 0;
+        border: none;
+      }
+    }
+  }
+  
+  .navLink {
+    color: $color-text-secondary;
+    font-weight: 500;
+    transition: color $transition-fast;
+    position: relative;
+    cursor: pointer;
+    padding: $spacing-sm 0;
+    
+    @include respond-to(md) {
+      padding: 0;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $gradient-primary;
+      transition: width $transition-base;
+      
+      @include respond-to(md) {
+        bottom: -4px;
+      }
+    }
+    
+    &:hover {
+      color: $color-text-primary;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+  
+  .mobileToggle {
+    @include button-reset;
+    @include flex-column;
+    gap: 4px;
+    padding: $spacing-xs;
+    
+    @include respond-to(md) {
+      display: none;
+    }
+    
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $color-text-primary;
+      transition: all $transition-base;
+    }
+    
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translateY(6px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-6px);
+      }
+    }
+  }
+}

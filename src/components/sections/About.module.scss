@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about {
+  @include section-spacing;
+  
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-2xl;
+    margin-bottom: $spacing-3xl;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-xl;
+    @include glass-effect(0.4, 8px);
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $spacing-2xl;
+    margin-top: $spacing-2xl;
+  }
+  
+  .process {
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba($color-primary, 0.1);
+      display: flex;
+      align-items: center;
+      
+      strong {
+        color: $color-primary-light;
+        margin-right: $spacing-md;
+      }
+    }
+  }
+  
+  .values {
+    h5 {
+      color: $color-accent-cyan;
+      margin-bottom: 0.5rem;
+      font-size: $font-size-base;
+    }
+    
+    p {
+      margin:0;
+      color: $color-text-muted;
+    }
+    
+    > div {
+      margin-bottom: $spacing-lg;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.statCounter {
+  text-align: center;
+  
+  .number {
+    font-size: clamp(2.5rem, 6vw, $font-size-5xl);
+    font-weight: 700;
+    @include text-gradient;
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-family: $font-heading;
+  }
+  
+  .label {
+    color: $color-text-muted;
+    font-size: $font-size-lg;
+  }
+}

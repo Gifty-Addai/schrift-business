@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 10px rgba($color-primary, 0.3));
+  }
+  
+  .text {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    
+    .schrift {
+      color: $color-text-primary;
+    }
+    
+    .flow {
+      @include text-gradient;
+      font-style: italic;
+      margin-left: 2px;
+      padding-right: 0.1em; // Fix for italic font clipping
+    }
+  }
+}

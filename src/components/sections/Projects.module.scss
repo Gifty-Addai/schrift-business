@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.projects {
+  @include section-spacing;
+  background: rgba($color-bg-secondary, 0.3);
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+  }
+  
+  .tags {
+    display: flex;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+    margin-top: $spacing-md;
+  }
+  
+  .tag {
+    background: rgba($color-primary, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: $border-radius-full;
+    font-size: $font-size-xs;
+    color: $color-primary-light;
+  }
+}
