@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import styles from './Hero.module.scss';
+import { FaArrowRight } from 'react-icons/fa';
 
 export const Hero = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -166,12 +167,11 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
+
                     <Button variant="primary" onClick={scrollToContact}>
-                        Get Started
+                        Let's talk <span className={styles.iconWrapper}><FaArrowRight size={14} /></span>
                     </Button>
-                    <Button variant="secondary" onClick={scrollToProjects}>
-                        View Portfolio
-                    </Button>
+
                 </motion.div>
             </div>
         </section>
