@@ -128,15 +128,15 @@ export const Hero = () => {
         }
     };
 
-    const scrollToProjects = () => {
-        const element = document.querySelector('#projects');
-        if (element) {
-            const offset = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-    };
+    // const scrollToProjects = () => {
+    //     const element = document.querySelector('#projects');
+    //     if (element) {
+    //         const offset = 80;
+    //         const elementPosition = element.getBoundingClientRect().top;
+    //         const offsetPosition = elementPosition + window.pageYOffset - offset;
+    //         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    //     }
+    // };
 
     return (
         <section id="home" className={styles.hero}>
