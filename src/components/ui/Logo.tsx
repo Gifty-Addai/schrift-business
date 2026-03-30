@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import styles from './Logo.module.scss';
 
-export const Logo = () => {
+interface LogoProps {
+    variant?: 'light' | 'dark'; // light = for light backgrounds (dark text), dark = for dark backgrounds (light text)
+}
+
+export const Logo = ({ variant = 'dark' }: LogoProps) => {
     return (
-        <div className={styles.logoWrapper}>
+        <div className={`${styles.logoWrapper} ${variant === 'light' ? styles.lightVariant : ''}`}>
             <motion.div
                 className={styles.icon}
                 whileHover={{ rotate: 180 }}

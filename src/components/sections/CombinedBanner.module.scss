@@ -1,0 +1,404 @@
+@use '../../styles/variables' as *;
+
+.combinedBanner {
+  position: relative;
+  min-height: auto;
+  background: linear-gradient(135deg, #E8E8E8 0%, #F5F5F5 50%, #E8E8E8 100%);
+  padding: $spacing-3xl $spacing-xl;
+  overflow: hidden;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl $spacing-md;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+// ========================================
+// Logo Section
+// ========================================
+
+.logoSection {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: $spacing-2xl;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// ========================================
+// Title Section
+// ========================================
+
+.titleSection {
+  margin-bottom: $spacing-3xl;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.title {
+  text-align: center;
+  font-family: $font-heading;
+  font-size: $font-size-3xl;
+  color: #1F2937;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.titleTop {
+  font-size: $font-size-2xl;
+  font-weight: 400;
+  color: #1F2937;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-xl;
+  }
+}
+
+.titleHighlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #0D5A8F 0%, #1A6FA8 100%);
+  color: white;
+  padding: $spacing-md $spacing-3xl;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  font-size: $font-size-5xl;
+  box-shadow: 0 4px 12px rgba(13, 90, 143, 0.3);
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+    padding: $spacing-sm $spacing-lg;
+  }
+}
+
+.titleSubtitle {
+  font-size: $font-size-xl;
+  letter-spacing: 0.5em;
+  font-weight: 400;
+  color: #1F2937;
+  border-bottom: 2px solid #1F2937;
+  padding-bottom: $spacing-xs;
+  padding-left: $spacing-md;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-base;
+    letter-spacing: 0.3em;
+  }
+}
+
+// ========================================
+// Services Section
+// ========================================
+
+.servicesSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-3xl;
+  align-items: center;
+  margin-bottom: $spacing-3xl;
+  position: relative;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+  }
+}
+
+.hexagonCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  // Dotted circle connecting to services
+  &::before {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border: 3px dotted rgba(13, 90, 143, 0.4);
+    border-radius: 50%;
+    z-index: 0;
+    
+    @media (max-width: $breakpoint-md) {
+      width: 320px;
+      height: 320px;
+    }
+  }
+}
+
+.hexagon {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #0D5A8F 0%, #1A6FA8 100%);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(13, 90, 143, 0.3);
+  z-index: 1;
+  
+  // Inner border effect
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.hexagonContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  
+  h2 {
+    color: white;
+    font-family: $font-heading;
+    font-size: $font-size-5xl;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-3xl;
+    }
+  }
+}
+
+// ========================================
+// Services List
+// ========================================
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  position: relative;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  position: relative;
+  
+  // Dotted connector line to hexagon
+  &::before {
+    content: '';
+    position: absolute;
+    left: -100px;
+    width: 80px;
+    height: 2px;
+    border-top: 3px dotted rgba(13, 90, 143, 0.4);
+    
+    @media (max-width: $breakpoint-lg) {
+      display: none;
+    }
+  }
+  
+  // Small connector circle
+  &::after {
+    content: '';
+    position: absolute;
+    left: -25px;
+    width: 12px;
+    height: 12px;
+    background: #E8E8E8;
+    border: 3px solid rgba(13, 90, 143, 0.4);
+    border-radius: 50%;
+    
+    @media (max-width: $breakpoint-lg) {
+      display: none;
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    gap: $spacing-sm;
+  }
+}
+
+.serviceHexagon {
+  width: 85px;
+  height: 85px;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  @media (max-width: $breakpoint-md) {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.serviceNumber {
+  color: white;
+  font-family: $font-heading;
+  font-size: $font-size-4xl;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.serviceContent {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.serviceIcon {
+  font-size: $font-size-2xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-xl;
+  }
+}
+
+.serviceTitle {
+  font-family: $font-heading;
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  color: #1F2937;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+// Exact color variants matching reference image
+.servicered .serviceHexagon {
+  background: linear-gradient(135deg, #D32F2F 0%, #E53935 100%);
+}
+
+.serviceorange .serviceHexagon {
+  background: linear-gradient(135deg, #F57C00 0%, #FF9800 100%);
+}
+
+.servicegreen .serviceHexagon {
+  background: linear-gradient(135deg, #7CB342 0%, #9CCC65 100%);
+}
+
+.servicecyan .serviceHexagon {
+  background: linear-gradient(135deg, #00ACC1 0%, #00BCD4 100%);
+}
+
+.servicepurple .serviceHexagon {
+  background: linear-gradient(135deg, #AB47BC 0%, #CE93D8 100%);
+}
+
+// ========================================
+// Footer Section
+// ========================================
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: $spacing-xl;
+}
+
+.callToAction {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  background: white;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-sm $spacing-lg;
+  }
+}
+
+.phoneIcon {
+  font-size: $font-size-3xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.contactInfo {
+  p {
+    margin: 0;
+    color: #1F2937;
+    font-family: $font-body;
+  }
+  
+  p:first-child {
+    font-size: $font-size-sm;
+    color: #6B7280;
+  }
+}
+
+.phoneNumber {
+  font-family: $font-heading;
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: #0D5A8F;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+// ========================================
+// Background Arrow Decoration
+// ========================================
+
+.bgArrow {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  opacity: 0.25;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 200px 0 200px 300px;
+    border-color: transparent transparent transparent #D1D5DB;
+    filter: blur(2px);
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    display: none;
+  }
+}

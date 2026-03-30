@@ -7,9 +7,16 @@ import { About } from './components/sections/About';
 import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 
+// Combined Banner
+import CombinedBanner from './components/sections/CombinedBanner';
+
 function App() {
   return (
     <Layout>
+      {/* Combined Banner - Portfolio style with logo and services */}
+      <CombinedBanner />
+
+      {/* Your existing sections */}
       <Hero />
       <Services />
       <TechStack />

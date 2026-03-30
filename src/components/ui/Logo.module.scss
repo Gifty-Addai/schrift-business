@@ -33,4 +33,13 @@
       padding-right: 0.1em; // Fix for italic font clipping
     }
   }
+  
+  // Light variant for light backgrounds
+  &.lightVariant {
+    .text {
+      .schrift {
+        color: #1F2937; // Dark gray for light backgrounds
+      }
+    }
+  }
 }
