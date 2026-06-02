@@ -11,11 +11,28 @@
     gap: $spacing-xl;
   }
   
+  .cardWrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projectCard {
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    min-height: 320px;
+
+    .tags {
+      margin-top: auto;
+      padding-top: $spacing-md;
+    }
+  }
+
   .tags {
     display: flex;
     gap: $spacing-xs;
     flex-wrap: wrap;
-    margin-top: $spacing-md;
   }
   
   .tag {

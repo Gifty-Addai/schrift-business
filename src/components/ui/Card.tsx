@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Card.module.scss';
 
@@ -8,12 +8,15 @@ interface CardProps {
     description?: string;
     children?: ReactNode;
     delay?: number;
+    className?: string;
+    style?: CSSProperties;
 }
 
-export const Card = ({ icon, title, description, children, delay = 0 }: CardProps) => {
+export const Card = ({ icon, title, description, children, delay = 0, className, style }: CardProps) => {
     return (
         <motion.div
-            className={styles.card}
+            className={`${styles.card} ${className || ''}`}
+            style={style}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}

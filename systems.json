@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "title": "Ancestral Tallow",
+        "description": "A premium e-commerce platform dedicated to ancestral skincare products. Features seamless checkout, subscription models, and an educational blog about natural skincare.",
+        "icon": "tallow",
+        "gradient": "linear-gradient(135deg, #e5c794ff 0%, #D97706 100%)",
+        "link": "https://ancestraltallowgh.com/",
+        "tags": ["ecommerce"]
+    },
+    {
+        "id": "2",
+        "title": "sDesign",
+        "description": "The fluid, animated, and enterprise-ready UI component library for Flutter. Zero friction, infinite customization, and pure flow.",
+        "icon": "package",
+        "gradient": "linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%)",
+        "link": "https://frank732.github.io/s_design/",
+        "tags": ["flutter", "package", "ui-library"]
+    }
+]

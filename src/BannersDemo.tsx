@@ -1,4 +1,3 @@
-import React from 'react';
 import HeroBanner from './components/sections/HeroBanner';
 import ServicesBanner from './components/sections/ServicesBanner';
 import './styles/global.scss';

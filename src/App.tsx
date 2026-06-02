@@ -8,13 +8,13 @@ import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 
 // Combined Banner
-import CombinedBanner from './components/sections/CombinedBanner';
+// import CombinedBanner from './components/sections/CombinedBanner';
 
 function App() {
   return (
     <Layout>
       {/* Combined Banner - Portfolio style with logo and services */}
-      <CombinedBanner />
+      {/* <CombinedBanner /> */}
 
       {/* Your existing sections */}
       <Hero />
