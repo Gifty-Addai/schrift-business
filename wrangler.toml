@@ -1,3 +1,6 @@
-name = "schrift-business"
-pages_build_output_dir = "dist"
+name = "schrifflow"
 compatibility_date = "2026-06-08"
+main = "src/worker.ts"
+
+[assets]
+directory = "./dist"
