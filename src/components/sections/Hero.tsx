@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
-import styles from './Hero.module.scss';
 
 export const Hero = () => {
     const scrollToContact = () => {
@@ -14,30 +13,35 @@ export const Hero = () => {
     };
 
     return (
-        <section id="home" className={styles.hero}>
-            <div className={styles.glowOverlay}></div>
+        <section id="home" className="min-h-screen relative bg-slate-900 overflow-hidden pt-36 pb-16 flex flex-col justify-center">
+            {/* Ambient background glow */}
+            <div className="absolute -top-1/10 -right-1/10 w-3/5 h-3/5 bg-[radial-gradient(circle,rgba(139,92,246,0.12)_0%,rgba(59,130,246,0.04)_50%,transparent_100%)] pointer-events-none z-10 filter blur-[80px]"></div>
+            
             <div className="container">
-                <div className={styles.heroGrid}>
+                <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 items-center relative z-20 mb-12 text-center lg:text-left">
                     {/* Left Column: Text & CTA */}
                     <motion.div
-                        className={styles.heroContent}
+                        className="flex flex-col items-center lg:items-start"
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className={styles.title}>
+                        <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold leading-none text-slate-50 mb-6 tracking-tight">
                             Crafting Digital<br />
-                            Brilliance<span className={styles.dot}>.</span>
+                            Brilliance<span className="text-violet-500">.</span>
                         </h1>
-                        <p className={styles.subtitle}>
+                        <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
                             We design and build premium, high-performance software solutions.
                             From web platforms to elegant mobile apps, we bring your digital vision to life.
                         </p>
                         
-                        <div className={styles.ctaGroup}>
-                            <button className={styles.ctaBtn} onClick={scrollToContact}>
+                        <div className="flex gap-4">
+                            <button 
+                                className="group font-heading font-semibold text-white text-base sm:text-lg flex items-center gap-4 pl-6 pr-1 py-1 border border-white/15 rounded-full hover:border-violet-500 hover:bg-violet-500/5 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                                onClick={scrollToContact}
+                            >
                                 Let's Talk 
-                                <span className={styles.arrowCircle}>
+                                <span className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-violet-600 group-hover:rotate-[-45deg] shrink-0">
                                     <FaArrowRight size={14} />
                                 </span>
                             </button>
@@ -46,18 +50,18 @@ export const Hero = () => {
 
                     {/* Right Column: Visual Portrait & Badge Overlay */}
                     <motion.div
-                        className={styles.visualContainer}
+                        className="relative flex justify-center items-center z-20"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className={styles.circleBg}>
+                        <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] bg-violet-500/5 border border-dashed border-violet-500/30 rounded-full relative flex items-center justify-center p-4">
                             {/* Inner circle border and glow */}
-                            <div className={styles.innerCircle}></div>
+                            <div className="absolute inset-2.5 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] shadow-[0_0_30px_rgba(139,92,246,0.1)] pointer-events-none"></div>
                             
                             {/* Portrait Image Placeholder (SVG Fallback) */}
-                            <div className={styles.avatarWrapper}>
-                                <svg className={styles.avatarSvg} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-slate-900/80 border border-white/10">
+                                <svg className="w-full h-full object-cover" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="100" cy="100" r="90" fill="url(#heroGrad)" />
                                     {/* Abstract minimalist developer representation */}
                                     <circle cx="100" cy="75" r="30" fill="#FFE1BF" />
@@ -83,15 +87,15 @@ export const Hero = () => {
                         </div>
 
                         {/* Overlap Rating Card */}
-                        <div className={styles.badgeOverlay}>
-                            <div className={styles.badgeStars}>
+                        <div className="absolute bottom-[-10px] left-[10%] lg:bottom-[10%] lg:-left-5 bg-slate-800/75 backdrop-blur-md border border-white/10 rounded-xl p-3 px-4 shadow-2xl flex flex-col gap-1 z-30">
+                            <div className="flex gap-0.5">
                                 {[...Array(5)].map((_, i) => (
-                                    <FaStar key={i} className={styles.starIcon} />
+                                    <FaStar key={i} className="text-violet-500 text-[10px]" />
                                 ))}
                             </div>
-                            <div className={styles.badgeText}>
-                                <strong>50+ Projects</strong>
-                                <span>Delivered Worldwide</span>
+                            <div className="flex flex-col">
+                                <strong className="text-white text-xs font-bold">50+ Projects</strong>
+                                <span className="text-slate-400 text-[10px]">Delivered Worldwide</span>
                             </div>
                         </div>
                     </motion.div>
@@ -99,26 +103,26 @@ export const Hero = () => {
 
                 {/* Bottom Row: Stats Strip */}
                 <motion.div
-                    className={styles.statsStrip}
+                    className="relative z-20 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/8 pt-8 mt-12"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                    <div className={styles.statItem}>
-                        <h2 className={styles.statNumber}>50+</h2>
-                        <p className={styles.statLabel}>Project Deliveries</p>
+                    <div className="text-center">
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">50+</h2>
+                        <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Project Deliveries</p>
                     </div>
-                    <div className={styles.statItem}>
-                        <h2 className={styles.statNumber}>5+</h2>
-                        <p className={styles.statLabel}>Years Experience</p>
+                    <div className="text-center">
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">5+</h2>
+                        <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Years Experience</p>
                     </div>
-                    <div className={styles.statItem}>
-                        <h2 className={styles.statNumber}>30+</h2>
-                        <p className={styles.statLabel}>Happy Clients</p>
+                    <div className="text-center">
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">30+</h2>
+                        <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Happy Clients</p>
                     </div>
-                    <div className={styles.statItem}>
-                        <h2 className={styles.statNumber}>100%</h2>
-                        <p className={styles.statLabel}>Client Satisfaction</p>
+                    <div className="text-center">
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">100%</h2>
+                        <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Client Satisfaction</p>
                     </div>
                 </motion.div>
             </div>

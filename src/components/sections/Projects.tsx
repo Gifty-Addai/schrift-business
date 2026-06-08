@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
-import styles from './Projects.module.scss';
 
 import systemsData from '../../../systems.json';
 
@@ -36,7 +35,7 @@ export const Projects = () => {
     const renderProjectGraphic = (title: string) => {
         if (title.toLowerCase().includes('tallow')) {
             return (
-                <svg viewBox="0 0 320 200" fill="none" className={styles.mockupSvg} xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 320 200" fill="none" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-103" xmlns="http://www.w3.org/2000/svg">
                     {/* Browser background */}
                     <rect width="320" height="200" rx="8" fill="#18181C" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
                     <rect width="320" height="25" rx="8" fill="#121214" />
@@ -66,7 +65,7 @@ export const Projects = () => {
             );
         } else {
             return (
-                <svg viewBox="0 0 320 200" fill="none" className={styles.mockupSvg} xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 320 200" fill="none" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-103" xmlns="http://www.w3.org/2000/svg">
                     {/* Mobile App Screen Frame */}
                     <rect width="320" height="200" rx="8" fill="#09090b" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
                     
@@ -105,22 +104,28 @@ export const Projects = () => {
     };
 
     return (
-        <section id="projects" className="section section-light">
+        <section id="projects" className="bg-slate-900 text-slate-100 py-16 md:py-24 relative border-b border-white/5">
             <div className="container">
-                <span className={styles.tagline}>Showcase</span>
-                <h2 className="section-title">
-                    Lets have a look at my <span>Portfolio</span>
+                <span className="font-heading text-sm font-semibold text-violet-400 uppercase tracking-widest text-center mb-3 block">
+                    Showcase
+                </span>
+                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white text-center leading-tight mb-4">
+                    Let's have a look at my <span className="text-gradient">Portfolio</span>
                 </h2>
-                <p className="section-subtitle">
+                <p className="text-slate-400 text-base text-center max-w-2xl mx-auto mb-12 leading-relaxed">
                     Recent work showcasing innovative digital systems and technical solutions
                 </p>
 
                 {/* Filter Tabs */}
-                <div className={styles.filterContainer}>
+                <div className="flex justify-center gap-2 mb-12 flex-wrap">
                     {filters.map((filter) => (
                         <button
                             key={filter.value}
-                            className={`${styles.filterBtn} ${activeFilter === filter.value ? styles.active : ''}`}
+                            className={`px-6 py-2 rounded-full border text-sm font-medium transition-all duration-300 hover:border-violet-500/30 hover:text-violet-400 hover:-translate-y-0.5 ${
+                                activeFilter === filter.value
+                                    ? 'bg-violet-600 border-violet-600 text-white shadow-[0_6px_15px_rgba(139,92,246,0.3)]'
+                                    : 'border-white/8 bg-white/3 text-slate-300'
+                            }`}
                             onClick={() => setActiveFilter(filter.value)}
                         >
                             {filter.label}
@@ -129,12 +134,12 @@ export const Projects = () => {
                 </div>
 
                 {/* Grid layout */}
-                <div className={styles.grid}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => (
                             <motion.div
                                 key={project.id}
-                                className={styles.projectCard}
+                                className="group flex flex-col h-full bg-slate-800/40 backdrop-blur-md border border-white/8 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-violet-500/20"
                                 onClick={() => project.link && window.open(project.link, '_blank')}
                                 layout
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -142,24 +147,24 @@ export const Projects = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.5, delay: index * 0.05 }}
                             >
-                                <div className={styles.graphicWrapper}>
+                                <div className="relative h-[220px] bg-black/20 flex items-center justify-center p-6 overflow-hidden border-b border-white/5">
                                     {renderProjectGraphic(project.title)}
                                     
                                     {/* Arrow Overlay Button */}
-                                    <div className={styles.arrowOverlay}>
-                                        <div className={styles.arrowCircle}>
-                                            <FaArrowRight size={14} className={styles.arrowIcon} />
+                                    <div className="absolute bottom-4 right-4 z-10">
+                                        <div className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:bg-violet-600 group-hover:border-violet-600">
+                                            <FaArrowRight size={14} className="text-white transition-all duration-300 group-hover:rotate-[-45deg]" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className={styles.info}>
-                                    <h3 className={styles.cardTitle}>{project.title}</h3>
-                                    <p className={styles.cardDesc}>{project.description}</p>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="font-heading text-xl font-bold text-white mb-2">{project.title}</h3>
+                                    <p className="text-slate-350 text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
                                     
-                                    <div className={styles.tags}>
+                                    <div className="flex gap-2 flex-wrap mt-auto">
                                         {project.tags.map((tag) => (
-                                            <span key={tag} className={styles.tag}>
+                                            <span key={tag} className="bg-violet-500/10 border border-violet-500/15 text-violet-400 text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
                                                 {tag}
                                             </span>
                                         ))}

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import styles from './Logo.module.scss';
 
 interface LogoProps {
     variant?: 'light' | 'dark'; // light = for light backgrounds (dark text), dark = for dark backgrounds (light text)
@@ -7,9 +6,9 @@ interface LogoProps {
 
 export const Logo = ({ variant = 'dark' }: LogoProps) => {
     return (
-        <div className={`${styles.logoWrapper} ${variant === 'light' ? styles.lightVariant : ''}`}>
+        <div className={`flex items-center gap-2 cursor-pointer select-none ${variant === 'light' ? 'group' : ''}`}>
             <motion.div
-                className={styles.icon}
+                className="flex items-center justify-center drop-shadow-[0_0_8px_rgba(139,92,246,0.25)]"
                 whileHover={{ rotate: 180 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
             >
@@ -33,9 +32,9 @@ export const Logo = ({ variant = 'dark' }: LogoProps) => {
                     </defs>
                 </svg>
             </motion.div>
-            <div className={styles.text}>
-                <span className={styles.schrift}>Schrift</span>
-                <span className={styles.flow}>Flow</span>
+            <div className="font-heading text-2xl font-bold leading-none tracking-tight">
+                <span className={variant === 'light' ? 'text-slate-900' : 'text-slate-50'}>Schrift</span>
+                <span className="text-gradient italic ml-0.5 pr-[0.1em]">Flow</span>
             </div>
         </div>
     );

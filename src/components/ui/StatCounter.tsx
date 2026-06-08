@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useSpring, useTransform } from 'framer-motion';
-import styles from './StatCounter.module.scss';
 
 interface StatCounterProps {
     value: number;
@@ -12,7 +11,6 @@ interface StatCounterProps {
 
 export const StatCounter = ({ value, label, suffix = '', duration = 2 }: StatCounterProps) => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
-    const [hasAnimated, setHasAnimated] = useState(false);
 
     const spring = useSpring(0, { duration: duration * 1000 });
     const display = useTransform(spring, (current) => Math.floor(current));
@@ -23,24 +21,23 @@ export const StatCounter = ({ value, label, suffix = '', duration = 2 }: StatCou
     }, [display]);
 
     useEffect(() => {
-        if (inView && !hasAnimated) {
+        if (inView) {
             spring.set(value);
-            setHasAnimated(true);
         }
-    }, [inView, value, spring, hasAnimated]);
+    }, [inView, value, spring]);
 
     return (
         <motion.div
             ref={ref}
-            className={styles.statCounter}
+            className="flex flex-col items-center justify-center text-center p-4"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
         >
-            <span className={styles.number}>
+            <span className="font-heading text-4xl sm:text-5xl font-bold text-violet-400 mb-2">
                 {displayValue}{suffix}
             </span>
-            <span className={styles.label}>{label}</span>
+            <span className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">{label}</span>
         </motion.div>
     );
 };

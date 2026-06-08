@@ -7,7 +7,6 @@ import {
     SiDart, SiFlutter, SiSharp, SiDotnet
 } from 'react-icons/si';
 import type { Technology } from '../../types';
-import styles from './TechStack.module.scss';
 import type { JSX } from 'react';
 
 const technologiesData: Technology[] = [
@@ -24,53 +23,48 @@ const technologiesData: Technology[] = [
 ];
 
 const iconMap: Record<string, JSX.Element> = {
-    react: <FaReact size={32} />,
-    dart: <SiDart size={32} />,
-    flutter: <SiFlutter size={32} />,
-    csharp: <SiSharp size={32} />,
-    dotnet: <SiDotnet size={32} />,
-    node: <FaNode size={32} />,
-    postgresql: <SiPostgresql size={32} />,
-    mongodb: <SiMongodb size={32} />,
-    docker: <FaDocker size={32} />,
-    kubernetes: <SiKubernetes size={32} />,
+    react: <FaReact className="text-[32px]" />,
+    dart: <SiDart className="text-[32px]" />,
+    flutter: <SiFlutter className="text-[32px]" />,
+    csharp: <SiSharp className="text-[32px]" />,
+    dotnet: <SiDotnet className="text-[32px]" />,
+    node: <FaNode className="text-[32px]" />,
+    postgresql: <SiPostgresql className="text-[32px]" />,
+    mongodb: <SiMongodb className="text-[32px]" />,
+    docker: <FaDocker className="text-[32px]" />,
+    kubernetes: <SiKubernetes className="text-[32px]" />,
 };
 
 export const TechStack = () => {
     return (
-        <section id="tech" className={`section ${styles.techStack}`}>
+        <section id="tech" className="bg-slate-950 text-slate-50 py-16 md:py-24 relative border-b border-white/5 [perspective:1000px]">
             <div className="container">
-                <h2 className="section-title">Technology Stack</h2>
-                <p className="section-subtitle">
+                <h2 className="text-center font-heading text-3xl sm:text-5xl font-bold text-white mb-4">Technology Stack</h2>
+                <p className="text-center text-slate-400 text-sm max-w-xl mx-auto mb-16 leading-relaxed">
                     Leveraging cutting-edge technologies to build modern solutions
                 </p>
 
-                <div className={styles.grid}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto px-6">
                     {technologiesData.map((tech, index) => (
                         <motion.div
                             key={tech.id}
-                            className={styles.techItem}
+                            className="group flex flex-col items-center justify-center gap-4 p-6 rounded-2xl bg-slate-800/40 border border-white/5 transition-all duration-500 [transform-style:preserve-3d] cursor-pointer relative backdrop-blur-md shadow-lg hover:bg-slate-800/60 hover:border-[var(--tech-color)] hover:shadow-[0_20px_30px_-10px_var(--shadow-color)] hover:-translate-y-2.5 hover:[transform:rotateX(10deg)_scale(1.1)]"
                             initial={{ opacity: 0, scale: 0.8, rotateX: -15 }}
                             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
                             viewport={{ once: true, margin: '-50px' }}
                             transition={{ duration: 0.4, delay: index * 0.05 }}
-                            whileHover={{
-                                y: -10,
-                                rotateX: 10,
-                                scale: 1.1,
-                                boxShadow: `0 20px 30px -10px ${tech.color}66`
-                            }}
                             style={{
-                                '--tech-color': tech.color
+                                '--tech-color': tech.color,
+                                '--shadow-color': `${tech.color}66`
                             } as React.CSSProperties}
                         >
-                            <div className={styles.iconWrapper}>
-                                <div className={styles.icon} style={{ color: tech.color }}>
+                            <div className="relative transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:translateZ(40px)_scale(1.1)]">
+                                <div className="filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]" style={{ color: tech.color }}>
                                     {iconMap[tech.icon]}
                                 </div>
-                                <div className={styles.reflection} style={{ background: tech.color }}></div>
+                                <div className="absolute top-full left-0 right-0 h-5 rounded-full opacity-0 filter blur-md transition-all duration-500 z-[-1] group-hover:opacity-40 group-hover:translate-y-2.5 group-hover:scale-75" style={{ background: tech.color }}></div>
                             </div>
-                            <span className={styles.name}>{tech.name}</span>
+                            <span className="font-semibold text-slate-300 text-sm md:text-base transition-all duration-500 group-hover:text-[var(--tech-color)] group-hover:[transform:translateZ(20px)]">{tech.name}</span>
                         </motion.div>
                     ))}
                 </div>

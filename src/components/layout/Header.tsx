@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Logo } from '../ui/Logo';
 import type { NavItem } from '../../types';
-import styles from './Header.module.scss';
 
 const navItems: NavItem[] = [
     { label: 'Home', href: '#home' },
@@ -45,26 +44,32 @@ export const Header = () => {
 
     return (
         <motion.header
-            className={`${styles.header} ${isScrolled ? styles.scrolled : ''} `}
+            className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-white/5 rounded-full transition-all duration-300 shadow-lg ${
+                isScrolled ? 'bg-slate-950/85 border-violet-500/20 shadow-2xl py-1' : 'bg-slate-950/45'
+            }`}
             initial={{ y: -100, x: '-50%' }}
             animate={{ y: 0, x: '-50%' }}
             transition={{ duration: 0.5 }}
         >
-            <nav className={styles.nav}>
-                <div onClick={() => scrollToSection('#home')} className={styles.logoWrapper}>
+            <nav className="flex items-center justify-between py-2 px-6 w-full">
+                <div onClick={() => scrollToSection('#home')} className="cursor-pointer flex items-center">
                     <Logo />
                 </div>
 
-                <ul className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''} `}>
+                <ul className={`hidden md:flex items-center gap-8 list-none ${
+                    isMenuOpen ? '!flex absolute top-[calc(100%+10px)] left-0 right-0 flex-col bg-slate-900/95 backdrop-blur-lg border border-white/8 rounded-2xl shadow-2xl p-6 gap-4' : ''
+                }`}>
                     {navItems.map((item, index) => (
                         <motion.li
                             key={item.href}
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
+                            className="w-full md:w-auto text-center"
                         >
                             <a
-                                className={styles.navLink}
+                                className="text-slate-200 text-sm font-medium hover:text-violet-400 transition-colors cursor-pointer py-1 relative group block md:inline-block
+                                after:absolute after:bottom-[-4px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-violet-500 after:to-indigo-500 hover:after:w-full after:transition-all after:duration-300"
                                 onClick={() => scrollToSection(item.href)}
                             >
                                 {item.label}
@@ -73,18 +78,21 @@ export const Header = () => {
                     ))}
                 </ul>
 
-                <div className={styles.navAction}>
-                    <button className={styles.discussBtn} onClick={() => scrollToSection('#contact')}>
+                <div className="flex items-center gap-4">
+                    <button 
+                        className="font-heading font-semibold text-white px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer hidden sm:block"
+                        onClick={() => scrollToSection('#contact')}
+                    >
                         Let's Discuss
                     </button>
                     <button
-                        className={`${styles.mobileToggle} ${isMenuOpen ? styles.active : ''} `}
+                        className="flex flex-col gap-1.5 p-2 md:hidden cursor-pointer"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
-                        <span />
-                        <span />
-                        <span />
+                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
                     </button>
                 </div>
             </nav>

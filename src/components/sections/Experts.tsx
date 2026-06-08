@@ -1,33 +1,32 @@
 import { motion } from 'framer-motion';
-import { FaPalette, FaMobileAlt, FaDraftingCompass, FaGlobe } from 'react-icons/fa';
-import styles from './Experts.module.scss';
+import { FaCogs, FaServer, FaGlobe, FaMobileAlt } from 'react-icons/fa';
 
 const capabilities = [
     {
-        icon: <FaPalette size={24} color="#8B5CF6" />,
-        title: 'Brand Design',
-        description: 'Creating unique brand identities, logos, and visual assets that resonate with your target audience.',
+        icon: <FaCogs size={24} className="text-violet-400" />,
+        title: 'System Architecture',
+        description: 'Planning and structuring secure, reliable software systems, databases, and integrations built to scale with your business.',
         bg: 'rgba(139, 92, 246, 0.05)',
         borderColor: 'rgba(139, 92, 246, 0.1)'
     },
     {
-        icon: <FaMobileAlt size={24} color="#EC4899" />,
-        title: 'App Design',
-        description: 'Designing intuitive, engaging mobile app interfaces for iOS and Android devices.',
+        icon: <FaServer size={24} className="text-pink-400" />,
+        title: 'Backend & APIs',
+        description: 'Building robust server logic, secure database schemas, and high-performance API endpoints to power all your platforms.',
         bg: 'rgba(236, 72, 153, 0.05)',
         borderColor: 'rgba(236, 72, 153, 0.1)'
     },
     {
-        icon: <FaDraftingCompass size={24} color="#3B82F6" />,
-        title: 'UX/UI Design',
-        description: 'User-centered user experience layouts and interfaces that ensure absolute ease-of-use.',
+        icon: <FaGlobe size={24} className="text-blue-400" />,
+        title: 'Web Applications',
+        description: 'Creating responsive, premium web portals, content platforms, and custom admin dashboards with fluid layouts.',
         bg: 'rgba(59, 130, 246, 0.05)',
         borderColor: 'rgba(59, 130, 246, 0.1)'
     },
     {
-        icon: <FaGlobe size={24} color="#10B981" />,
-        title: 'Web Design',
-        description: 'Polished, responsive website systems built using state-of-the-art layout architectures.',
+        icon: <FaMobileAlt size={24} className="text-emerald-400" />,
+        title: 'Mobile Systems',
+        description: 'Developing high-performance, cross-platform mobile apps for iOS and Android with modern user experiences using Flutter.',
         bg: 'rgba(16, 185, 129, 0.05)',
         borderColor: 'rgba(16, 185, 129, 0.1)'
     }
@@ -42,22 +41,22 @@ const pills = [
 
 export const Experts = () => {
     return (
-        <section id="experts" className="section section-light">
+        <section id="experts" className="bg-slate-900 text-slate-100 py-16 md:py-24 relative border-b border-white/5">
             <div className="container">
-                <div className={styles.expertsGrid}>
+                <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-16 lg:gap-24 items-center mb-16">
                     {/* Left Column: Heading and intro */}
                     <motion.div
-                        className={styles.intro}
+                        className="flex flex-col items-center lg:items-start text-center lg:text-left"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className={styles.sub}>Who We Are</span>
-                        <h2 className={styles.title}>
-                            We Are Experts<br />In Our Field<span className={styles.dot}>.</span>
+                        <span className="font-heading text-sm font-semibold text-violet-400 uppercase tracking-widest mb-3">Who We Are</span>
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white leading-tight mb-4">
+                            We Are Experts<br />In Our Field<span className="text-violet-400">.</span>
                         </h2>
-                        <p className={styles.desc}>
+                        <p className="text-slate-300 text-base leading-relaxed">
                             We combine design thinking with technical expertise to build digital experiences
                             that drive growth and capture market share. Our dedicated team is committed to
                             excellence in every pixel and every line of code.
@@ -65,23 +64,22 @@ export const Experts = () => {
                     </motion.div>
 
                     {/* Right Column: 2x2 Capabilities Grid */}
-                    <div className={styles.capabilitiesGrid}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {capabilities.map((cap, index) => (
                             <motion.div
                                 key={index}
-                                className={styles.card}
-                                style={{ backgroundColor: cap.bg, borderColor: cap.borderColor }}
+                                className="bg-slate-800/40 border border-white/5 rounded-2xl p-6 transition-all duration-300 flex flex-col items-start hover:-translate-y-1 hover:shadow-2xl hover:border-violet-500/10"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}
+                                whileHover={{ scale: 1.02 }}
                             >
-                                <div className={styles.iconBox}>
+                                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 shadow-lg">
                                     {cap.icon}
                                 </div>
-                                <h3 className={styles.cardTitle}>{cap.title}</h3>
-                                <p className={styles.cardDesc}>{cap.description}</p>
+                                <h3 className="font-heading text-lg font-bold text-white mb-2">{cap.title}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed mb-0">{cap.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -89,16 +87,16 @@ export const Experts = () => {
 
                 {/* Bottom Row: Pills Row */}
                 <motion.div
-                    className={styles.pillsRow}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-6"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     {pills.map((pill, index) => (
-                        <div key={index} className={styles.pill}>
-                            <span className={styles.pillValue}>{pill.value}</span>
-                            <span className={styles.pillLabel}>{pill.label}</span>
+                        <div key={index} className="bg-slate-800/40 border border-white/5 rounded-full py-3 px-6 flex flex-col items-center justify-center text-center shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-500/20 hover:shadow-lg">
+                            <span className="font-heading text-xl sm:text-2xl font-bold text-violet-400 leading-none mb-1">{pill.value}</span>
+                            <span className="text-slate-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">{pill.label}</span>
                         </div>
                     ))}
                 </motion.div>

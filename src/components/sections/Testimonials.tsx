@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FaStar, FaQuoteRight } from 'react-icons/fa';
-import styles from './Testimonials.module.scss';
 
 const testimonialsData = [
     {
@@ -10,7 +9,7 @@ const testimonialsData = [
         role: 'CEO',
         company: 'Ancestral Tallow',
         initials: 'FA',
-        color: '#FF7A00'
+        color: '#8B5CF6'
     },
     {
         id: '2',
@@ -19,7 +18,7 @@ const testimonialsData = [
         role: 'Product Lead',
         company: 'sDesign Flutter App',
         initials: 'AB',
-        color: '#8B5CF6'
+        color: '#A78BFA'
     },
     {
         id: '3',
@@ -34,47 +33,49 @@ const testimonialsData = [
 
 export const Testimonials = () => {
     return (
-        <section id="testimonials" className="section section-dark">
+        <section id="testimonials" className="bg-slate-900 text-slate-100 py-16 md:py-24 relative border-b border-white/5">
             <div className="container">
-                <span className={styles.tagline}>Feedback</span>
-                <h2 className="section-title">
-                    Testimonials That Speak to <span>My Results</span>
+                <span className="font-heading text-sm font-semibold text-violet-400 uppercase tracking-widest text-center mb-3 block">
+                    Feedback
+                </span>
+                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white text-center leading-tight mb-4">
+                    Testimonials That Speak to <span className="text-gradient">My Results</span>
                 </h2>
-                <p className="section-subtitle">
+                <p className="text-slate-400 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
                     Here is what clients and partners say about working with SchriftFlow
                 </p>
 
-                <div className={styles.grid}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {testimonialsData.map((testimonial, index) => (
                         <motion.div
                             key={testimonial.id}
-                            className={`glass-card-dark ${styles.testimonialCard}`}
+                            className="group relative p-6 rounded-2xl glass-card-dark flex flex-col h-full hover:border-violet-500/20"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
                             {/* Quote icon decoration */}
-                            <div className={styles.quoteIconWrapper}>
-                                <FaQuoteRight size={24} className={styles.quoteIcon} />
+                            <div className="absolute top-6 right-6">
+                                <FaQuoteRight size={24} className="text-white opacity-5 transition-all duration-300 group-hover:text-violet-400 group-hover:opacity-20" />
                             </div>
 
                             {/* Stars */}
-                            <div className={styles.stars}>
+                            <div className="flex gap-1 mb-4">
                                 {[...Array(5)].map((_, i) => (
-                                    <FaStar key={i} className={styles.starIcon} />
+                                    <FaStar key={i} className="text-violet-400 text-sm" />
                                 ))}
                             </div>
 
-                            <p className={styles.quote}>"{testimonial.quote}"</p>
+                            <p className="text-slate-300 text-sm leading-relaxed italic mb-6 flex-grow">"{testimonial.quote}"</p>
 
-                            <div className={styles.author}>
-                                <div className={styles.avatar} style={{ backgroundColor: `${testimonial.color}15`, color: testimonial.color, border: `1.5px solid ${testimonial.color}44` }}>
+                            <div className="flex items-center gap-4 border-t border-white/5 pt-4 mt-auto">
+                                <div className="w-11 h-11 rounded-full flex items-center justify-center font-heading text-base font-bold select-none" style={{ backgroundColor: `${testimonial.color}15`, color: testimonial.color, border: `1.5px solid ${testimonial.color}44` }}>
                                     {testimonial.initials}
                                 </div>
-                                <div className={styles.info}>
-                                    <h4 className={styles.name}>{testimonial.author}</h4>
-                                    <p className={styles.role}>
+                                <div className="flex flex-col">
+                                    <h4 className="font-heading text-base font-bold text-white mb-0.5">{testimonial.author}</h4>
+                                    <p className="text-slate-400 text-xs">
                                         {testimonial.role}, {testimonial.company}
                                     </p>
                                 </div>
@@ -84,10 +85,10 @@ export const Testimonials = () => {
                 </div>
 
                 {/* Carousel Pagination Dots Indicator */}
-                <div className={styles.dotsIndicator}>
-                    <span className={`${styles.dot} ${styles.active}`}></span>
-                    <span className={styles.dot}></span>
-                    <span className={styles.dot}></span>
+                <div className="flex justify-center gap-2 mt-12">
+                    <span className="w-6 h-2 rounded-full bg-violet-600 transition-all duration-300"></span>
+                    <span className="w-2 h-2 rounded-full bg-white/15 cursor-pointer transition-all duration-300 hover:bg-white/40"></span>
+                    <span className="w-2 h-2 rounded-full bg-white/15 cursor-pointer transition-all duration-300 hover:bg-white/40"></span>
                 </div>
             </div>
         </section>
