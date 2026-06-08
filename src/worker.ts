@@ -2,6 +2,7 @@
 
 export interface Env {
     WEB3FORMS_ACCESS_KEY: string;
+    TEAM_MEMBERS: string; // JSON array of team member objects
     ASSETS: Fetcher;
 }
 
@@ -67,6 +68,21 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     }
 }
 
+function handleTeam(env: Env): Response {
+    try {
+        const members = JSON.parse(env.TEAM_MEMBERS || '[]');
+        return new Response(JSON.stringify(members), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+    } catch {
+        return new Response(JSON.stringify([]), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+    }
+}
+
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
         const { pathname } = new URL(request.url);
@@ -81,6 +97,14 @@ export default {
                 return handleContact(request, env);
             }
             return new Response('Method Not Allowed', { status: 405 });
+        }
+
+        // Handle team API route
+        if (pathname === '/api/team') {
+            if (method === 'OPTIONS') {
+                return new Response(null, { status: 204, headers: CORS_HEADERS });
+            }
+            return handleTeam(env);
         }
 
         // All other requests → serve static assets from dist/

@@ -71,20 +71,62 @@ const servicesData = [
         description: 'Code review, system audit, database optimization, CI/CD setup, and developer mentorship to power up your team.',
         mockup: (
             <svg viewBox="0 0 240 140" fill="none" className="w-full h-full max-w-[220px]">
-                {/* Dashboard statistics chart */}
                 <rect x="20" y="20" width="200" height="100" rx="6" fill="#1E1E24" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-                {/* Grid lines */}
                 <line x1="30" y1="90" x2="210" y2="90" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
                 <line x1="30" y1="60" x2="210" y2="60" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
-                {/* Bar chart lines */}
                 <path d="M40 100 V65" stroke="#8B5CF6" strokeWidth="8" strokeLinecap="round" />
                 <path d="M70 100 V45" stroke="#8B5CF6" strokeWidth="8" strokeLinecap="round" opacity="0.6" />
                 <path d="M100 100 V75" stroke="#3B82F6" strokeWidth="8" strokeLinecap="round" />
                 <path d="M130 100 V35" stroke="#10B981" strokeWidth="8" strokeLinecap="round" />
                 <path d="M160 100 V55" stroke="#EC4899" strokeWidth="8" strokeLinecap="round" />
-                {/* Spline curve */}
                 <path d="M40 70 Q 85 30, 130 80 T 200 40" stroke="#8B5CF6" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                 <circle cx="200" cy="40" r="4" fill="#8B5CF6" />
+            </svg>
+        )
+    },
+    {
+        id: '5',
+        title: 'IoT Solutions',
+        description: 'End-to-end IoT system design — from embedded firmware and sensor networks to real-time cloud dashboards and device management platforms.',
+        mockup: (
+            <svg viewBox="0 0 240 140" fill="none" className="w-full h-full max-w-[220px]">
+                {/* Central hub */}
+                <circle cx="120" cy="70" r="18" fill="#8B5CF6" fillOpacity="0.15" stroke="#8B5CF6" strokeWidth="1.5" />
+                <circle cx="120" cy="70" r="8" fill="#8B5CF6" fillOpacity="0.5" />
+
+                {/* Pulse rings */}
+                <circle cx="120" cy="70" r="26" stroke="#8B5CF6" strokeWidth="0.8" strokeOpacity="0.3" strokeDasharray="3 3" />
+                <circle cx="120" cy="70" r="34" stroke="#8B5CF6" strokeWidth="0.6" strokeOpacity="0.15" strokeDasharray="2 4" />
+
+                {/* Device nodes */}
+                {/* Temp sensor - top left */}
+                <line x1="90" y1="48" x2="109" y2="62" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.4" />
+                <rect x="68" y="28" width="28" height="24" rx="4" fill="#1E1E24" stroke="#10B981" strokeWidth="1" />
+                <circle cx="82" cy="40" r="5" fill="#10B981" fillOpacity="0.3" />
+                <line x1="78" y1="40" x2="86" y2="40" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" />
+
+                {/* Camera - top right */}
+                <line x1="150" y1="48" x2="131" y2="62" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.4" />
+                <rect x="144" y="28" width="28" height="24" rx="4" fill="#1E1E24" stroke="#3B82F6" strokeWidth="1" />
+                <circle cx="158" cy="40" r="6" fill="#3B82F6" fillOpacity="0.2" stroke="#3B82F6" strokeWidth="1" />
+                <circle cx="158" cy="40" r="3" fill="#3B82F6" fillOpacity="0.5" />
+
+                {/* Switch - left */}
+                <line x1="98" y1="70" x2="82" y2="70" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.4" />
+                <rect x="54" y="58" width="28" height="24" rx="4" fill="#1E1E24" stroke="#EC4899" strokeWidth="1" />
+                <circle cx="63" cy="70" r="3" fill="#EC4899" fillOpacity="0.6" />
+                <circle cx="73" cy="70" r="3" fill="#EC4899" fillOpacity="0.3" />
+
+                {/* Cloud - right */}
+                <line x1="142" y1="70" x2="158" y2="70" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.4" />
+                <rect x="158" y="58" width="28" height="24" rx="4" fill="#1E1E24" stroke="#8B5CF6" strokeWidth="1" />
+                <path d="M164 74 Q164 66 170 66 Q172 62 176 63 Q180 60 182 65 Q186 65 186 70 Q186 74 182 74 Z" fill="#8B5CF6" fillOpacity="0.3" stroke="#8B5CF6" strokeWidth="0.8" />
+
+                {/* Motor - bottom */}
+                <line x1="120" y1="89" x2="120" y2="104" stroke="#8B5CF6" strokeWidth="1" strokeOpacity="0.4" />
+                <rect x="106" y="104" width="28" height="24" rx="4" fill="#1E1E24" stroke="#F59E0B" strokeWidth="1" />
+                <circle cx="120" cy="116" r="6" fill="#F59E0B" fillOpacity="0.2" stroke="#F59E0B" strokeWidth="1" />
+                <path d="M117 116 L123 116 M120 113 L120 119" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
         )
     }

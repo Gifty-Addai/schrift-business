@@ -1,25 +1,15 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const teamMembers = [
-    {
-        name: 'Frank Addai',
-        role: 'Founder & Software Engineer',
-        initials: 'FA',
-        accent: '#8B5CF6',
-        grad: 'from-violet-600 to-indigo-500',
-        badgeBg: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
-        tag: 'Engineering',
-    },
-    {
-        name: 'Ransford Owusu',
-        role: 'Co-Founder & Business Strategist',
-        initials: 'RO',
-        accent: '#A78BFA',
-        grad: 'from-violet-400 to-purple-600',
-        badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-        tag: 'Strategy',
-    }
-];
+interface TeamMember {
+    name: string;
+    role: string;
+    initials: string;
+    accent: string;
+    grad: string;
+    badgeBg: string;
+    tag: string;
+}
 
 const cardVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -30,7 +20,30 @@ const cardVariants = {
     }),
 };
 
+// Skeleton card shown while loading
+const SkeletonCard = () => (
+    <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.03] border border-white/[0.07] animate-pulse">
+        <div className="w-24 h-24 rounded-full bg-white/10 mb-6" />
+        <div className="h-4 w-16 bg-white/10 rounded-full mb-3" />
+        <div className="h-5 w-28 bg-white/10 rounded-full mb-2" />
+        <div className="h-4 w-36 bg-white/8 rounded-full" />
+    </div>
+);
+
 export const Team = () => {
+    const [members, setMembers] = useState<TeamMember[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('/api/team')
+            .then((res) => res.json() as Promise<TeamMember[]>)
+            .then((data) => {
+                setMembers(data);
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
+    }, []);
+
     return (
         <section id="team" className="bg-[#0a0f1e] text-slate-100 py-20 md:py-28 relative border-b border-white/5 overflow-hidden">
             {/* Ambient background blobs */}
@@ -73,69 +86,68 @@ export const Team = () => {
 
                 {/* Cards grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {teamMembers.map((member, i) => (
-                        <motion.div
-                            key={member.name}
-                            custom={i}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="group relative flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-white/[0.14] transition-all duration-500 hover:-translate-y-1 overflow-hidden cursor-default"
-                            style={{
-                                boxShadow: '0 4px 30px rgba(0,0,0,0.2)',
-                            }}
-                        >
-                            {/* Card glow on hover */}
-                            <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                                style={{
-                                    background: `radial-gradient(ellipse at 50% 0%, ${member.accent}18 0%, transparent 70%)`,
-                                }}
-                            />
-
-                            {/* Avatar */}
-                            <div className="relative mb-6">
-                                {/* Outer glow ring */}
+                    {loading ? (
+                        // Show 2 skeleton placeholders while fetching
+                        Array.from({ length: 2 }).map((_, i) => <SkeletonCard key={i} />)
+                    ) : (
+                        members.map((member, i) => (
+                            <motion.div
+                                key={member.name}
+                                custom={i}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="group relative flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-white/[0.14] transition-all duration-500 hover:-translate-y-1 overflow-hidden cursor-default"
+                                style={{ boxShadow: '0 4px 30px rgba(0,0,0,0.2)' }}
+                            >
+                                {/* Card glow on hover */}
                                 <div
-                                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md scale-110"
-                                    style={{ background: `radial-gradient(circle, ${member.accent}55 0%, transparent 70%)` }}
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                                    style={{ background: `radial-gradient(ellipse at 50% 0%, ${member.accent}18 0%, transparent 70%)` }}
                                 />
-                                {/* Gradient border ring */}
-                                <div
-                                    className={`relative w-24 h-24 rounded-full p-[2.5px] bg-gradient-to-br ${member.grad}`}
-                                    style={{ boxShadow: `0 0 0 1px ${member.accent}33` }}
-                                >
-                                    <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
-                                        <span
-                                            className={`font-heading text-2xl font-bold bg-gradient-to-br ${member.grad} bg-clip-text text-transparent select-none`}
-                                        >
-                                            {member.initials}
-                                        </span>
+
+                                {/* Avatar */}
+                                <div className="relative mb-6">
+                                    {/* Outer glow ring */}
+                                    <div
+                                        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-md scale-110"
+                                        style={{ background: `radial-gradient(circle, ${member.accent}55 0%, transparent 70%)` }}
+                                    />
+                                    {/* Gradient border ring */}
+                                    <div
+                                        className={`relative w-24 h-24 rounded-full p-[2.5px] bg-gradient-to-br ${member.grad}`}
+                                        style={{ boxShadow: `0 0 0 1px ${member.accent}33` }}
+                                    >
+                                        <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
+                                            <span className={`font-heading text-2xl font-bold bg-gradient-to-br ${member.grad} bg-clip-text text-transparent select-none`}>
+                                                {member.initials}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Badge */}
-                            <span className={`inline-block text-[10px] font-semibold uppercase tracking-widest px-3 py-1 rounded-full border mb-3 ${member.badgeBg}`}>
-                                {member.tag}
-                            </span>
+                                {/* Badge */}
+                                <span className={`inline-block text-[10px] font-semibold uppercase tracking-widest px-3 py-1 rounded-full border mb-3 ${member.badgeBg}`}>
+                                    {member.tag}
+                                </span>
 
-                            {/* Name & Role */}
-                            <h3 className="font-heading text-lg font-bold text-white mb-1.5 group-hover:text-violet-200 transition-colors duration-300">
-                                {member.name}
-                            </h3>
-                            <p className="text-slate-400 text-sm leading-snug">
-                                {member.role}
-                            </p>
+                                {/* Name & Role */}
+                                <h3 className="font-heading text-lg font-bold text-white mb-1.5 group-hover:text-violet-200 transition-colors duration-300">
+                                    {member.name}
+                                </h3>
+                                <p className="text-slate-400 text-sm leading-snug">
+                                    {member.role}
+                                </p>
 
-                            {/* Subtle bottom accent line */}
-                            <div
-                                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-2/3 transition-all duration-500 rounded-full"
-                                style={{ background: `linear-gradient(to right, transparent, ${member.accent}, transparent)` }}
-                            />
-                        </motion.div>
-                    ))}
+                                {/* Subtle bottom accent line */}
+                                <div
+                                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-2/3 transition-all duration-500 rounded-full"
+                                    style={{ background: `linear-gradient(to right, transparent, ${member.accent}, transparent)` }}
+                                />
+                            </motion.div>
+                        ))
+                    )}
                 </div>
             </div>
         </section>
