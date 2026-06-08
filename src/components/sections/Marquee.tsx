@@ -5,7 +5,9 @@ const marqueeItems = [
     'UX Research',
     'Web Development',
     'Cloud Systems',
-    'Software Architecture'
+    'Software Architecture',
+    'IoT Systems',
+    'Automation'
 ];
 
 export const Marquee = () => {
