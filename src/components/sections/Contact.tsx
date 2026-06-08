@@ -6,6 +6,9 @@ import type { ContactFormData } from '../../types';
 
 export const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+
     const {
         register,
         handleSubmit,
@@ -13,14 +16,67 @@ export const Contact = () => {
         reset,
     } = useForm<ContactFormData>();
 
-    const onSubmit = (data: ContactFormData) => {
-        console.log('Form submitted:', data);
-        setIsSubmitted(true);
-        reset();
+    const onSubmit = async (data: ContactFormData) => {
+        setIsLoading(true);
+        setSubmitError(null);
 
-        setTimeout(() => {
-            setIsSubmitted(false);
-        }, 5000);
+        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+        if (!accessKey) {
+            // Simulated submission in development/demo when key is absent
+            console.log('Form submitted (Simulated):', data);
+            console.warn(
+                "Contact Form Submitted! [Simulated]\n" +
+                "To receive actual emails on form submission, get a free Access Key from Web3Forms (https://web3forms.com) and add 'VITE_WEB3FORMS_ACCESS_KEY=your_key' to your .env file."
+            );
+            
+            // Mock network delay for UX
+            await new Promise((resolve) => setTimeout(resolve, 800));
+            setIsSubmitted(true);
+            reset();
+            setIsLoading(false);
+
+            setTimeout(() => {
+                setIsSubmitted(false);
+            }, 5000);
+            return;
+        }
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: accessKey,
+                    name: data.name,
+                    email: data.email,
+                    subject: `New SchriftFlow Inquiry from ${data.name}`,
+                    project_type: data.project || 'General Software Inquiry',
+                    message: data.message,
+                    from_name: 'SchriftFlow Contact Form'
+                })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setIsSubmitted(true);
+                reset();
+                setTimeout(() => {
+                    setIsSubmitted(false);
+                }, 5000);
+            } else {
+                console.error('Web3Forms Error:', result);
+                setSubmitError(result.message || 'Failed to submit form. Please try emailing directly.');
+            }
+        } catch (err) {
+            console.error('Form submission network error:', err);
+            setSubmitError('Network error occurred. Please check your connection or email directly.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -155,8 +211,12 @@ export const Contact = () => {
                                 {errors.message && <p className="text-red-500 text-xs mt-1 font-medium">{errors.message.message}</p>}
                             </div>
 
-                            <button type="submit" className="w-full py-3 mt-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-heading text-base font-semibold rounded-full shadow-[0_4px_15px_rgba(139,92,246,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(139,92,246,0.5)] active:translate-y-0 cursor-pointer">
-                                Send Message
+                            <button 
+                                type="submit" 
+                                disabled={isLoading}
+                                className="w-full py-3 mt-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-heading text-base font-semibold rounded-full shadow-[0_4px_15px_rgba(139,92,246,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(139,92,246,0.5)] active:translate-y-0 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {isLoading ? 'Sending...' : 'Send Message'}
                             </button>
 
                             {isSubmitted && (
@@ -166,6 +226,16 @@ export const Contact = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                 >
                                     ✓ Message sent successfully! We will get back to you soon.
+                                </motion.div>
+                            )}
+
+                            {submitError && (
+                                <motion.div
+                                    className="bg-red-600 text-white p-3 rounded-lg mt-4 text-center text-sm font-medium"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    ⚠ {submitError}
                                 </motion.div>
                             )}
                         </form>
