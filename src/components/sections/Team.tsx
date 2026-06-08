@@ -3,40 +3,22 @@ import { motion } from 'framer-motion';
 const teamMembers = [
     {
         name: 'Frank Addai',
-        role: 'Founder & Software Architect',
+        role: 'Founder & Software Engineer',
         initials: 'FA',
         accent: '#8B5CF6',
         grad: 'from-violet-600 to-indigo-500',
         badgeBg: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
-        tag: 'Leadership',
+        tag: 'Engineering',
     },
     {
-        name: 'Festus Addai',
+        name: 'Ransford Owusu',
         role: 'Co-Founder & Business Strategist',
-        initials: 'FA',
+        initials: 'RO',
         accent: '#A78BFA',
         grad: 'from-violet-400 to-purple-600',
         badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
         tag: 'Strategy',
-    },
-    {
-        name: 'Grace Mensah',
-        role: 'Lead UI/UX Designer',
-        initials: 'GM',
-        accent: '#EC4899',
-        grad: 'from-pink-500 to-rose-500',
-        badgeBg: 'bg-pink-500/10 text-pink-400 border-pink-500/20',
-        tag: 'Design',
-    },
-    {
-        name: 'Kofi Owusu',
-        role: 'Senior Full Stack Developer',
-        initials: 'KO',
-        accent: '#10B981',
-        grad: 'from-emerald-500 to-teal-500',
-        badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-        tag: 'Engineering',
-    },
+    }
 ];
 
 const cardVariants = {
