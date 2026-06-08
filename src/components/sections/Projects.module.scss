@@ -7,7 +7,7 @@
   font-family: $font-heading;
   font-size: $font-size-sm;
   font-weight: 600;
-  color: $color-orange;
+  color: $color-primary-light;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: $spacing-xs;
@@ -23,27 +23,26 @@
 
 .filterBtn {
   @include button-reset;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: $color-text-dark-secondary;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: $color-text-secondary;
   font-size: $font-size-sm;
   font-weight: 500;
   padding: 0.6rem 1.4rem;
   border-radius: 99px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
   transition: all $transition-base;
   
   &:hover {
-    border-color: rgba($color-orange, 0.3);
-    color: $color-orange;
+    border-color: rgba($color-primary, 0.3);
+    color: $color-primary-light;
     transform: translateY(-1px);
   }
   
   &.active {
-    background: $color-orange;
-    border-color: $color-orange;
+    background: $color-primary;
+    border-color: $color-primary;
     color: white;
-    box-shadow: 0 6px 15px rgba($color-orange, 0.3);
+    box-shadow: 0 6px 15px rgba($color-primary, 0.3);
   }
 }
 
@@ -59,11 +58,12 @@
 }
 
 .projectCard {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba($color-bg-dark-sec, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: $border-radius-xl;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -72,16 +72,16 @@
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba($color-orange, 0.2);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba($color-primary, 0.2);
     
     .mockupSvg {
       transform: scale(1.03);
     }
     
     .arrowCircle {
-      background: $color-orange;
-      border-color: $color-orange;
+      background: $color-primary;
+      border-color: $color-primary;
       
       .arrowIcon {
         color: white;
@@ -94,13 +94,13 @@
 .graphicWrapper {
   position: relative;
   height: 220px;
-  background: #f7f3eb;
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: $spacing-lg;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .mockupSvg {
@@ -121,17 +121,17 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all $transition-base;
 }
 
 .arrowIcon {
-  color: $color-text-dark-primary;
+  color: white;
   transition: transform $transition-base, color $transition-base;
 }
 
@@ -146,12 +146,12 @@
   font-family: $font-heading;
   font-size: $font-size-xl;
   font-weight: 700;
-  color: $color-text-dark-primary;
+  color: white;
   margin-bottom: $spacing-xs;
 }
 
 .cardDesc {
-  color: $color-text-dark-muted;
+  color: $color-text-secondary;
   font-size: $font-size-sm;
   line-height: 1.6;
   margin-bottom: $spacing-lg;
@@ -166,9 +166,9 @@
 }
 
 .tag {
-  background: rgba($color-orange, 0.08);
-  border: 1px solid rgba($color-orange, 0.1);
-  color: $color-orange-dark;
+  background: rgba($color-primary, 0.1);
+  border: 1px solid rgba($color-primary, 0.15);
+  color: $color-primary-light;
   font-size: $font-size-xs;
   font-weight: 600;
   padding: 0.25rem 0.75rem;

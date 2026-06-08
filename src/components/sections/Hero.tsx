@@ -64,18 +64,18 @@ export const Hero = () => {
                                     {/* Hair */}
                                     <path d="M70 75C70 45 130 45 130 75" stroke="#4A3B32" strokeWidth="12" strokeLinecap="round" />
                                     {/* Glasses */}
-                                    <rect x="78" y="70" width="18" height="10" rx="3" stroke="#FFA000" strokeWidth="2.5" />
-                                    <rect x="104" y="70" width="18" height="10" rx="3" stroke="#FFA000" strokeWidth="2.5" />
-                                    <line x1="96" y1="75" x2="104" y2="75" stroke="#FFA000" strokeWidth="2.5" />
-                                    {/* Clothes (yellow shirt) */}
-                                    <path d="M50 160C50 120 150 120 150 160V190H50V160Z" fill="#FFA000" />
+                                    <rect x="78" y="70" width="18" height="10" rx="3" stroke="#A78BFA" strokeWidth="2.5" />
+                                    <rect x="104" y="70" width="18" height="10" rx="3" stroke="#A78BFA" strokeWidth="2.5" />
+                                    <line x1="96" y1="75" x2="104" y2="75" stroke="#A78BFA" strokeWidth="2.5" />
+                                    {/* Clothes (purple shirt) */}
+                                    <path d="M50 160C50 120 150 120 150 160V190H50V160Z" fill="#8B5CF6" />
                                     {/* Tablet */}
                                     <rect x="80" y="130" width="40" height="50" rx="4" fill="#18181B" stroke="#A78BFA" strokeWidth="2" />
                                     <circle cx="100" cy="170" r="2" fill="white" />
                                     <defs>
                                         <linearGradient id="heroGrad" x1="100" y1="10" x2="100" y2="190" gradientUnits="userSpaceOnUse">
-                                            <stop stopColor="#F59E0B" stopOpacity="0.4" />
-                                            <stop offset="1" stopColor="#8B5CF6" stopOpacity="0.1" />
+                                            <stop stopColor="#8B5CF6" stopOpacity="0.4" />
+                                            <stop offset="1" stopColor="#3B82F6" stopOpacity="0.1" />
                                         </linearGradient>
                                     </defs>
                                 </svg>

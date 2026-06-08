@@ -6,7 +6,7 @@
   font-family: $font-heading;
   font-size: $font-size-sm;
   font-weight: 600;
-  color: $color-orange;
+  color: $color-primary-light;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: $spacing-xs;
@@ -32,17 +32,17 @@
     font-family: $font-heading;
     font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 700;
-    color: $color-text-dark-primary;
+    color: white;
     line-height: 1.2;
     margin-bottom: $spacing-md;
     
     span {
-      color: $color-orange;
+      color: $color-primary-light;
     }
   }
   
   .description {
-    color: $color-text-dark-secondary;
+    color: $color-text-secondary;
     font-size: $font-size-base;
     line-height: 1.7;
     margin-bottom: $spacing-xl;
@@ -66,8 +66,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba($color-orange, 0.08);
-  color: $color-orange;
+  background: rgba($color-primary, 0.1);
+  color: $color-primary-light;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +80,7 @@
   
   span {
     font-size: $font-size-xs;
-    color: $color-text-dark-muted;
+    color: $color-text-muted;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -89,12 +89,12 @@
   a, p {
     font-size: $font-size-base;
     font-weight: 700;
-    color: $color-text-dark-primary;
+    color: white;
     margin-bottom: 0;
   }
   
   a:hover {
-    color: $color-orange;
+    color: $color-primary-light;
   }
 }
 
@@ -107,21 +107,21 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: $color-text-dark-secondary;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: $color-text-secondary;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all $transition-base;
   
   &:hover {
     color: white;
-    background: $color-orange;
-    border-color: $color-orange;
+    background: $color-primary;
+    border-color: $color-primary;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba($color-orange, 0.3);
+    box-shadow: 0 6px 15px rgba($color-primary, 0.3);
   }
 }
 
@@ -147,17 +147,17 @@
   margin-bottom: 6px;
   font-size: $font-size-sm;
   font-weight: 600;
-  color: $color-text-dark-primary;
+  color: white;
 }
 
 .input,
 .textarea {
   width: 100%;
   padding: 0.75rem $spacing-md;
-  background: #FDFDFD;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: $border-radius-md;
-  color: $color-text-dark-primary;
+  color: white;
   font-family: $font-body;
   font-size: $font-size-sm;
   transition: all $transition-base;
@@ -165,13 +165,13 @@
   
   &:focus {
     outline: none;
-    border-color: $color-orange;
-    background: white;
-    box-shadow: 0 0 0 4px rgba($color-orange, 0.08);
+    border-color: $color-primary;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba($color-primary, 0.1);
   }
   
   &::placeholder {
-    color: $color-text-dark-muted;
+    color: $color-text-muted;
     opacity: 0.6;
   }
 }
@@ -191,21 +191,21 @@
 .submitBtn {
   @include button-reset;
   width: 100%;
-  background: $gradient-orange;
+  background: $gradient-primary;
   color: white;
   font-family: $font-heading;
   font-size: $font-size-base;
   font-weight: 600;
   padding: 0.75rem;
   border-radius: 99px;
-  box-shadow: 0 4px 15px rgba($color-orange, 0.3);
+  box-shadow: 0 4px 15px rgba($color-primary, 0.3);
   text-align: center;
   transition: all $transition-base;
   margin-top: $spacing-sm;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba($color-orange, 0.5);
+    box-shadow: 0 6px 20px rgba($color-primary, 0.5);
   }
   
   &:active {

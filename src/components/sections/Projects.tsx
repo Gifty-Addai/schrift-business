@@ -38,26 +38,26 @@ export const Projects = () => {
             return (
                 <svg viewBox="0 0 320 200" fill="none" className={styles.mockupSvg} xmlns="http://www.w3.org/2000/svg">
                     {/* Browser background */}
-                    <rect width="320" height="200" rx="8" fill="#FAF6F0" stroke="rgba(0,0,0,0.04)" strokeWidth="1" />
-                    <rect width="320" height="25" rx="8" fill="#F0EAE1" />
+                    <rect width="320" height="200" rx="8" fill="#18181C" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                    <rect width="320" height="25" rx="8" fill="#121214" />
                     {/* Browser dots */}
                     <circle cx="15" cy="12" r="3" fill="#EF4444" />
                     <circle cx="25" cy="12" r="3" fill="#F59E0B" />
                     <circle cx="35" cy="12" r="3" fill="#10B981" />
                     {/* Website layout */}
-                    <text x="60" y="16" fill="#8C7853" fontSize="8" fontWeight="bold">ANCESTRAL TALLOW</text>
+                    <text x="60" y="16" fill="#FAFAFA" fontSize="8" fontWeight="bold">ANCESTRAL TALLOW</text>
                     
                     {/* Skincare Bottle representation */}
-                    <rect x="35" y="50" width="70" height="110" rx="4" fill="#D97706" fillOpacity="0.1" stroke="#D97706" strokeWidth="1.5" />
-                    <rect x="45" y="70" width="50" height="70" rx="2" fill="#FFFFFF" stroke="#D97706" strokeWidth="0.8" />
-                    <line x1="53" y1="85" x2="87" y2="85" stroke="#8C7853" strokeWidth="1.5" />
-                    <line x1="53" y1="95" x2="87" y2="95" stroke="#8C7853" strokeWidth="1" />
+                    <rect x="35" y="50" width="70" height="110" rx="4" fill="#D97706" fillOpacity="0.05" stroke="#D97706" strokeWidth="1.5" />
+                    <rect x="45" y="70" width="50" height="70" rx="2" fill="#121214" stroke="#D97706" strokeWidth="0.8" />
+                    <line x1="53" y1="85" x2="87" y2="85" stroke="#E4E4E7" strokeWidth="1.5" />
+                    <line x1="53" y1="95" x2="87" y2="95" stroke="#A1A1AA" strokeWidth="1" />
                     
                     {/* Product copy */}
-                    <rect x="125" y="60" width="160" height="16" rx="4" fill="#8C7853" />
-                    <rect x="125" y="86" width="160" height="8" rx="2" fill="rgba(0,0,0,0.06)" />
-                    <rect x="125" y="100" width="130" height="8" rx="2" fill="rgba(0,0,0,0.06)" />
-                    <rect x="125" y="114" width="90" height="8" rx="2" fill="rgba(0,0,0,0.06)" />
+                    <rect x="125" y="60" width="160" height="16" rx="4" fill="#8B5CF6" fillOpacity="0.2" stroke="#8B5CF6" strokeWidth="1" />
+                    <rect x="125" y="86" width="160" height="8" rx="2" fill="rgba(255,255,255,0.06)" />
+                    <rect x="125" y="100" width="130" height="8" rx="2" fill="rgba(255,255,255,0.04)" />
+                    <rect x="125" y="114" width="90" height="8" rx="2" fill="rgba(255,255,255,0.04)" />
                     
                     {/* Purchase CTA */}
                     <rect x="125" y="136" width="70" height="24" rx="12" fill="#D97706" />

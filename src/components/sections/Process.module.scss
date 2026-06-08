@@ -89,12 +89,12 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: white;
+  background: $color-bg-dark-sec;
   border: 3px solid $color-primary-light;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all $transition-base;
 }
 
@@ -102,7 +102,7 @@
   font-family: $font-heading;
   font-size: $font-size-lg;
   font-weight: 700;
-  color: $color-primary-dark;
+  color: $color-primary-light;
   transition: color $transition-base;
 }
 
