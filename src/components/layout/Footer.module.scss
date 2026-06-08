@@ -2,86 +2,261 @@
 @use '../../styles/mixins' as *;
 
 .footer {
-  background: $color-bg-secondary;
-  border-top: 1px solid rgba($color-primary, 0.1);
-  padding: $spacing-2xl 0 $spacing-lg;
-  margin-top: $spacing-3xl;
+  background-color: $color-bg-dark;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+// Connect Banner
+.connectBanner {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: $spacing-2xl 0;
+}
+
+.connectContainer {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
   
-  .content {
-    @include container;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: $spacing-2xl;
-    margin-bottom: $spacing-2xl;
-  }
-  
-  .section {
-    h3 {
-      font-size: $font-size-lg;
-      margin-bottom: $spacing-md;
-    }
-  }
-  
-  .brand {
-    .logo {
-      font-family: $font-heading;
-      font-size: $font-size-xl;
-      font-weight: 700;
-      @include text-gradient;
-    }
-    
-    p {
-      color: $color-text-muted;
-      margin-top: $spacing-md;
-    }
-  }
-  
-  .links {
-    list-style: none;
-    
-    li {
-      margin-bottom: $spacing-sm;
-    }
-    
-    a {
-      color: $color-text-muted;
-      transition: color $transition-fast;
-      cursor: pointer;
-      
-      &:hover {
-        color: $color-primary-light;
-      }
-    }
-  }
-  
-  .socialLinks {
-    display: flex;
-    gap: $spacing-md;
-    margin-top: $spacing-md;
-  }
-  
-  .socialLink {
-    width: 40px;
-    height: 40px;
-    border-radius: $border-radius-full;
-    background: rgba($color-primary, 0.1);
-    @include flex-center;
-    color: $color-primary-light;
-    transition: all $transition-base;
-    
-    &:hover {
-      background: $gradient-primary;
-      color: white;
-      transform: translateY(-2px);
-    }
-  }
-  
-  .bottom {
-    @include container;
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
     text-align: center;
-    padding-top: $spacing-lg;
-    border-top: 1px solid rgba($color-primary, 0.1);
+  }
+}
+
+.connectTitle {
+  font-family: $font-heading;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0;
+}
+
+.connectBtn {
+  @include button-reset;
+  background: $gradient-orange;
+  color: white;
+  font-family: $font-heading;
+  font-size: $font-size-base;
+  font-weight: 600;
+  padding: 0.8rem 1.8rem;
+  border-radius: 99px;
+  box-shadow: 0 4px 15px rgba($color-orange, 0.3);
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($color-orange, 0.5);
+  }
+}
+
+// Main columns grid
+.mainContent {
+  @include container;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+  gap: $spacing-2xl;
+  padding: $spacing-3xl $spacing-lg;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandCol {
+  gap: $spacing-md;
+}
+
+.logoWrapper {
+  margin-bottom: $spacing-xs;
+}
+
+.brandDesc {
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.socials {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.socialLink {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+  
+  &:hover {
+    background: $color-orange;
+    border-color: $color-orange;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($color-orange, 0.3);
+  }
+}
+
+.colTitle {
+  font-family: $font-heading;
+  font-size: $font-size-base;
+  font-weight: 700;
+  color: white;
+  margin-bottom: $spacing-lg;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: 0;
+  margin: 0;
+  
+  a {
     color: $color-text-muted;
     font-size: $font-size-sm;
+    font-weight: 500;
+    transition: color $transition-fast;
+    cursor: pointer;
+    
+    &:hover {
+      color: $color-orange;
+    }
+  }
+}
+
+.newsletterCol {
+  gap: $spacing-sm;
+}
+
+.newsletterDesc {
+  color: $color-text-muted;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  margin-bottom: $spacing-xs;
+}
+
+.subscribeForm {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.subscribeInput {
+  width: 100%;
+  padding: 0.75rem $spacing-md;
+  padding-right: 3.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: $border-radius-md;
+  color: white;
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  transition: all $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $color-orange;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba($color-orange, 0.1);
+  }
+}
+
+.subscribeBtn {
+  @include button-reset;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 44px;
+  background: $color-orange;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 $border-radius-md $border-radius-md 0;
+  transition: background $transition-fast;
+  
+  &:hover {
+    background: $color-orange-light;
+  }
+}
+
+.subscribeSuccess {
+  color: #10B981;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+// Bottom strip
+.bottomStrip {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: $spacing-md 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bottomContainer {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: $color-text-muted;
+  font-size: $font-size-xs;
+  margin-bottom: 0;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.backToTop {
+  color: $color-text-muted;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-orange;
   }
 }

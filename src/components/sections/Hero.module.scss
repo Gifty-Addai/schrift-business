@@ -2,60 +2,258 @@
 @use '../../styles/mixins' as *;
 
 .hero {
-  min-height: 90vh;
-  @include flex-center;
+  min-height: 100vh;
   position: relative;
+  background-color: $color-bg-dark;
   overflow: hidden;
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: 140px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
-  .canvas {
+  .glowOverlay {
     position: absolute;
-    top: 50%;
-    right: -100px;
-    transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    opacity: 0.6;
-    
-    @media (max-width: $breakpoint-md) {
-      right: -200px;
-      opacity: 0.3;
-    }
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba($color-orange, 0.08) 0%, rgba($color-primary, 0.04) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(80px);
   }
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: $spacing-3xl;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: $spacing-3xl;
   
-  .content {
-    @include container;
-    position: relative;
-    z-index: 2;
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
     text-align: center;
-    max-width: 900px;
   }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   
-  .title {
-    font-size: clamp(2.5rem, 8vw, $font-size-6xl);
-    margin-bottom: $spacing-lg;
-    line-height: 1.1;
+  @media (max-width: $breakpoint-lg) {
+    align-items: center;
+  }
+}
+
+.title {
+  font-family: $font-heading;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  letter-spacing: -0.02em;
+  
+  .dot {
+    color: $color-orange;
+  }
+}
+
+.subtitle {
+  font-size: clamp($font-size-base, 2vw, $font-size-lg);
+  color: $color-text-secondary;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: $spacing-2xl;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.ctaBtn {
+  @include button-reset;
+  background: transparent;
+  color: white;
+  font-family: $font-heading;
+  font-size: $font-size-lg;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 0.5rem 0.5rem 0.5rem $spacing-lg;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: $color-orange;
+    background: rgba($color-orange, 0.05);
     
-    .gradient {
-      @include text-gradient;
+    .arrowCircle {
+      background: $color-orange;
+      transform: rotate(-45deg);
     }
   }
   
-  .subtitle {
-    font-size: clamp($font-size-lg, 3vw, $font-size-xl);
-    color: $color-text-secondary;
-    margin-bottom: $spacing-2xl;
-    line-height: 1.7;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+  .arrowCircle {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-base;
+  }
+}
+
+// Visual portrait wrapper
+.visualContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.circleBg {
+  width: 320px;
+  height: 320px;
+  background: rgba($color-orange, 0.05);
+  border: 1px dashed rgba($color-orange, 0.3);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  
+  @media (max-width: $breakpoint-sm) {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+.innerCircle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($color-orange, 0.15) 0%, transparent 70%);
+  box-shadow: 0 0 30px rgba($color-orange, 0.1);
+  pointer-events: none;
+}
+
+.avatarWrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-bg-dark-sec, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatarSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Floating rating badge overlay
+.badgeOverlay {
+  position: absolute;
+  bottom: 10%;
+  left: -20px;
+  background: rgba($color-bg-dark-card, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-lg;
+  padding: 0.75rem $spacing-md;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+  
+  @media (max-width: $breakpoint-lg) {
+    left: 10%;
+    bottom: -10px;
+  }
+}
+
+.badgeStars {
+  display: flex;
+  gap: 2px;
+}
+
+.starIcon {
+  color: $color-orange;
+  font-size: 10px;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  
+  strong {
+    color: white;
+    font-size: $font-size-sm;
+    font-weight: 700;
   }
   
-  .cta {
-    display: flex;
-    gap: $spacing-lg;
-    justify-content: center;
-    flex-wrap: wrap;
+  span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
   }
+}
+
+// Stats counter strip
+.statsStrip {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: $spacing-2xl;
+  margin-top: $spacing-xl;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-family: $font-heading;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: $color-orange;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }

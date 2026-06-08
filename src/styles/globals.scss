@@ -69,10 +69,49 @@ button {
 .section {
   @include section-spacing;
   position: relative;
+  
+  // Section background styles
+  &.section-dark {
+    background-color: $color-bg-dark;
+    color: $color-text-primary;
+    
+    p {
+      color: $color-text-secondary;
+    }
+    
+    .section-title {
+      color: $color-text-primary;
+    }
+  }
+  
+  &.section-light {
+    background-color: $color-bg-light;
+    color: $color-text-dark-primary;
+    
+    p {
+      color: $color-text-dark-secondary;
+    }
+    
+    .section-title {
+      color: $color-text-dark-primary;
+    }
+    
+    .section-subtitle {
+      color: $color-text-dark-muted;
+    }
+  }
 }
 
 .text-gradient {
-  @include text-gradient;
+  @include text-gradient($gradient-primary);
+  
+  &-orange {
+    @include text-gradient($gradient-orange);
+  }
+  
+  &-purple {
+    @include text-gradient($gradient-purple);
+  }
 }
 
 .text-center {
@@ -82,17 +121,22 @@ button {
 // Section Title Styles
 .section-title {
   text-align: center;
-  margin-bottom: $spacing-2xl;
-  font-size: clamp(2rem, 6vw, $font-size-4xl);
+  margin-bottom: $spacing-lg;
+  font-size: clamp(2rem, 5vw, $font-size-4xl);
+  font-weight: 700;
+  
+  span {
+    color: $color-orange;
+  }
 }
 
 .section-subtitle {
   text-align: center;
-  font-size: $font-size-lg;
+  font-size: $font-size-base;
   color: $color-text-muted;
   max-width: 600px;
   margin: 0 auto $spacing-2xl;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 // Scroll Reveal Animation
@@ -141,7 +185,38 @@ button {
   }
   
   &-4 {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+// Glassmorphism and Card Overrides
+.glass-card-dark {
+  background: rgba($color-bg-dark-card, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba($color-text-muted, 0.08);
+  border-radius: $border-radius-xl;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: rgba($color-orange, 0.2);
+    box-shadow: 0 12px 40px 0 rgba($color-orange, 0.05);
+    transform: translateY(-5px);
+  }
+}
+
+.glass-card-light {
+  background: rgba($color-bg-light-card, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba($color-text-dark-muted, 0.08);
+  border-radius: $border-radius-xl;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: rgba($color-primary, 0.2);
+    box-shadow: 0 12px 40px 0 rgba($color-primary, 0.05);
+    transform: translateY(-5px);
   }
 }
 

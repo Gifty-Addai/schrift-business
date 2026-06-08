@@ -1,177 +1,125 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../ui/Button';
+import { FaArrowRight, FaStar } from 'react-icons/fa';
 import styles from './Hero.module.scss';
-import { FaArrowRight } from 'react-icons/fa';
 
 export const Hero = () => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        canvas.width = 600;
-        canvas.height = 600;
-
-        class Particle {
-            x: number;
-            y: number;
-            size: number;
-            speedX: number;
-            speedY: number;
-            opacity: number;
-
-            constructor() {
-                this.x = Math.random() * canvas!.width;
-                this.y = Math.random() * canvas!.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.opacity = Math.random() * 0.5 + 0.3;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas!.width) this.x = 0;
-                if (this.x < 0) this.x = canvas!.width;
-                if (this.y > canvas!.height) this.y = 0;
-                if (this.y < 0) this.y = canvas!.height;
-            }
-
-            draw() {
-                ctx!.fillStyle = `rgba(139, 92, 246, ${this.opacity})`;
-                ctx!.beginPath();
-                ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx!.fill();
-            }
-        }
-
-        const particles: Particle[] = [];
-        for (let i = 0; i < 80; i++) {
-            particles.push(new Particle());
-        }
-
-        let rotation = 0;
-        const drawRotatingShape = () => {
-            ctx.save();
-            ctx.translate(canvas.width / 2, canvas.height / 2);
-            ctx.rotate(rotation);
-
-            const segments = 60;
-            const radius = 150;
-            const tubeRadius = 30;
-
-            for (let i = 0; i < segments; i++) {
-                const angle1 = (i / segments) * Math.PI * 2;
-                const angle2 = ((i + 1) / segments) * Math.PI * 2;
-
-                const x1 = Math.cos(angle1) * radius;
-                const y1 = Math.sin(angle1) * radius;
-                const x2 = Math.cos(angle2) * radius;
-                const y2 = Math.sin(angle2) * radius;
-
-                const opacity = (Math.sin(angle1 + rotation * 2) + 1) / 4 + 0.1;
-
-                const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
-                gradient.addColorStop(0, `rgba(139, 92, 246, ${opacity})`);
-                gradient.addColorStop(0.5, `rgba(99, 102, 241, ${opacity + 0.1})`);
-                gradient.addColorStop(1, `rgba(59, 130, 246, ${opacity})`);
-
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = tubeRadius * (Math.sin(angle1) * 0.5 + 1);
-                ctx.lineCap = 'round';
-
-                ctx.beginPath();
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-        };
-
-        let animationFrameId: number;
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((particle) => {
-                particle.update();
-                particle.draw();
-            });
-
-            drawRotatingShape();
-            rotation += 0.005;
-
-            animationFrameId = requestAnimationFrame(animate);
-        };
-
-        animate();
-
-        return () => {
-            cancelAnimationFrame(animationFrameId);
-        };
-    }, []);
-
     const scrollToContact = () => {
         const element = document.querySelector('#contact');
         if (element) {
-            const offset = 80;
+            const offset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     };
 
-    // const scrollToProjects = () => {
-    //     const element = document.querySelector('#projects');
-    //     if (element) {
-    //         const offset = 80;
-    //         const elementPosition = element.getBoundingClientRect().top;
-    //         const offsetPosition = elementPosition + window.pageYOffset - offset;
-    //         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    //     }
-    // };
-
     return (
         <section id="home" className={styles.hero}>
-            <canvas ref={canvasRef} className={styles.canvas} />
+            <div className={styles.glowOverlay}></div>
+            <div className="container">
+                <div className={styles.heroGrid}>
+                    {/* Left Column: Text & CTA */}
+                    <motion.div
+                        className={styles.heroContent}
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className={styles.title}>
+                            Crafting Digital<br />
+                            Brilliance<span className={styles.dot}>.</span>
+                        </h1>
+                        <p className={styles.subtitle}>
+                            We design and build premium, high-performance software solutions.
+                            From web platforms to elegant mobile apps, we bring your digital vision to life.
+                        </p>
+                        
+                        <div className={styles.ctaGroup}>
+                            <button className={styles.ctaBtn} onClick={scrollToContact}>
+                                Let's Talk 
+                                <span className={styles.arrowCircle}>
+                                    <FaArrowRight size={14} />
+                                </span>
+                            </button>
+                        </div>
+                    </motion.div>
 
-            <div className={styles.content}>
-                <motion.h1
-                    className={styles.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    Crafting <span className={styles.gradient}>Future Software</span> Today
-                </motion.h1>
+                    {/* Right Column: Visual Portrait & Badge Overlay */}
+                    <motion.div
+                        className={styles.visualContainer}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <div className={styles.circleBg}>
+                            {/* Inner circle border and glow */}
+                            <div className={styles.innerCircle}></div>
+                            
+                            {/* Portrait Image Placeholder (SVG Fallback) */}
+                            <div className={styles.avatarWrapper}>
+                                <svg className={styles.avatarSvg} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="100" cy="100" r="90" fill="url(#heroGrad)" />
+                                    {/* Abstract minimalist developer representation */}
+                                    <circle cx="100" cy="75" r="30" fill="#FFE1BF" />
+                                    {/* Hair */}
+                                    <path d="M70 75C70 45 130 45 130 75" stroke="#4A3B32" strokeWidth="12" strokeLinecap="round" />
+                                    {/* Glasses */}
+                                    <rect x="78" y="70" width="18" height="10" rx="3" stroke="#FFA000" strokeWidth="2.5" />
+                                    <rect x="104" y="70" width="18" height="10" rx="3" stroke="#FFA000" strokeWidth="2.5" />
+                                    <line x1="96" y1="75" x2="104" y2="75" stroke="#FFA000" strokeWidth="2.5" />
+                                    {/* Clothes (yellow shirt) */}
+                                    <path d="M50 160C50 120 150 120 150 160V190H50V160Z" fill="#FFA000" />
+                                    {/* Tablet */}
+                                    <rect x="80" y="130" width="40" height="50" rx="4" fill="#18181B" stroke="#A78BFA" strokeWidth="2" />
+                                    <circle cx="100" cy="170" r="2" fill="white" />
+                                    <defs>
+                                        <linearGradient id="heroGrad" x1="100" y1="10" x2="100" y2="190" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="#F59E0B" stopOpacity="0.4" />
+                                            <stop offset="1" stopColor="#8B5CF6" stopOpacity="0.1" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
 
-                <motion.p
-                    className={styles.subtitle}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                    Transform your ideas into elegant, scalable solutions. Bring your digital ideas to life.
-                </motion.p>
+                        {/* Overlap Rating Card */}
+                        <div className={styles.badgeOverlay}>
+                            <div className={styles.badgeStars}>
+                                {[...Array(5)].map((_, i) => (
+                                    <FaStar key={i} className={styles.starIcon} />
+                                ))}
+                            </div>
+                            <div className={styles.badgeText}>
+                                <strong>50+ Projects</strong>
+                                <span>Delivered Worldwide</span>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
 
+                {/* Bottom Row: Stats Strip */}
                 <motion.div
-                    className={styles.cta}
+                    className={styles.statsStrip}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
-
-                    <Button variant="primary" onClick={scrollToContact}>
-                        Let's talk <span className={styles.iconWrapper}><FaArrowRight size={14} /></span>
-                    </Button>
-
+                    <div className={styles.statItem}>
+                        <h2 className={styles.statNumber}>50+</h2>
+                        <p className={styles.statLabel}>Project Deliveries</p>
+                    </div>
+                    <div className={styles.statItem}>
+                        <h2 className={styles.statNumber}>5+</h2>
+                        <p className={styles.statLabel}>Years Experience</p>
+                    </div>
+                    <div className={styles.statItem}>
+                        <h2 className={styles.statNumber}>30+</h2>
+                        <p className={styles.statLabel}>Happy Clients</p>
+                    </div>
+                    <div className={styles.statItem}>
+                        <h2 className={styles.statNumber}>100%</h2>
+                        <p className={styles.statLabel}>Client Satisfaction</p>
+                    </div>
                 </motion.div>
             </div>
         </section>

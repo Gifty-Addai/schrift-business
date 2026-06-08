@@ -1,63 +1,142 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.testimonials {
-  @include section-spacing;
+.tagline {
+  display: block;
+  text-align: center;
+  font-family: $font-heading;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-orange;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: $spacing-xs;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-xl;
   
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-xl;
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .testimonial {
-    .quote {
-      font-style: italic;
-      color: $color-text-secondary;
-      line-height: 1.8;
-      margin-bottom: $spacing-lg;
-      position: relative;
-      padding-left: $spacing-lg;
-      
-      &::before {
-        content: '"';
-        position: absolute;
-        left: 0;
-        top: -10px;
-        font-size: 3rem;
-        color: $color-primary;
-        opacity: 0.3;
-      }
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonialCard {
+  position: relative;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  &:hover {
+    .quoteIcon {
+      color: $color-orange;
+      opacity: 0.2;
     }
-    
-    .author {
-      display: flex;
-      align-items: center;
-      gap: $spacing-md;
-    }
-    
-    .avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: $border-radius-full;
-      background: $gradient-primary;
-      @include flex-center;
-      font-weight: 700;
-      font-size: $font-size-lg;
-      flex-shrink: 0;
-    }
-    
-    .info {
-      h4 {
-        font-size: $font-size-base;
-        margin: 0 0 0.25rem 0;
-      }
-      
-      p {
-        margin: 0;
-        font-size: $font-size-sm;
-        color: $color-text-muted;
-      }
-    }
+  }
+}
+
+.quoteIconWrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.quoteIcon {
+  color: white;
+  opacity: 0.05;
+  transition: all $transition-base;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: $spacing-md;
+}
+
+.starIcon {
+  color: $color-orange;
+  font-size: $font-size-sm;
+}
+
+.quote {
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  color: $color-text-secondary;
+  font-style: italic;
+  margin-bottom: $spacing-lg;
+  flex-grow: 1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: $spacing-md;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-heading;
+  font-size: $font-size-base;
+  font-weight: 700;
+  user-select: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-family: $font-heading;
+  font-size: $font-size-base;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.role {
+  color: $color-text-muted;
+  font-size: $font-size-xs;
+  margin-bottom: 0;
+}
+
+.dotsIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: $spacing-3xl;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all $transition-base;
+  cursor: pointer;
+  
+  &.active {
+    width: 24px;
+    border-radius: 4px;
+    background: $color-orange;
+  }
+  
+  &:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.4);
   }
 }

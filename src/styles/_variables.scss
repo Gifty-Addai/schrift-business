@@ -8,26 +8,41 @@ $color-primary-light: #A78BFA;
 $color-primary-dark: #7C3AED;
 
 // Colors - Accent
+$color-orange: #FF7A00;
+$color-orange-light: #FF9F43;
+$color-orange-dark: #D95400;
 $color-accent-blue: #3B82F6;
 $color-accent-cyan: #06B6D4;
 $color-accent-pink: #EC4899;
-$color-accent-orange: #F59E0B;
 
-// Colors - Background
-$color-bg-primary: #0F172A;
-$color-bg-secondary: #1E293B;
-$color-bg-tertiary: #334155;
+// Colors - Background (Blended Dark & Light/Cream)
+$color-bg-dark: #09090b;          // Deep dark main background
+$color-bg-dark-sec: #18181b;      // Dark secondary background
+$color-bg-dark-card: #27272a;     // Glassmorphism card base
+$color-bg-light: #FAF7F0;         // Light cream background (Design 1 & 2)
+$color-bg-light-sec: #F4EFE3;     // Light cream secondary
+$color-bg-light-card: #FFFFFF;    // White card background
+
+// Default Background & Text (will be overriden in sections)
+$color-bg-primary: $color-bg-dark;
+$color-bg-secondary: $color-bg-dark-sec;
+$color-bg-tertiary: $color-bg-dark-card;
 
 // Colors - Text
-$color-text-primary: #F1F5F9;
-$color-text-secondary: #CBD5E1;
-$color-text-muted: #94A3B8;
+$color-text-primary: #FAFAFA;
+$color-text-secondary: #E4E4E7;
+$color-text-muted: #A1A1AA;
+$color-text-dark-primary: #18181B;
+$color-text-dark-secondary: #3F3F46;
+$color-text-dark-muted: #71717A;
 
 // Gradients
-$gradient-primary: linear-gradient(135deg, $color-primary 0%, #6366F1 100%);
-$gradient-accent: linear-gradient(135deg, $color-accent-cyan 0%, $color-accent-blue 100%);
-$gradient-hero: linear-gradient(135deg, $color-primary 0%, #6366F1 50%, $color-accent-blue 100%);
-$gradient-card: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba(#6366F1, 0.05) 100%);
+$gradient-orange: linear-gradient(135deg, $color-orange 0%, $color-orange-light 100%);
+$gradient-purple: linear-gradient(135deg, $color-primary 0%, $color-accent-pink 100%);
+$gradient-primary: linear-gradient(135deg, $color-orange 0%, $color-primary 100%);
+$gradient-hero: radial-gradient(circle at top right, rgba($color-orange, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba($color-primary, 0.1), transparent 40%);
+$gradient-card-dark: linear-gradient(135deg, rgba($color-bg-dark-card, 0.7) 0%, rgba($color-bg-dark-card, 0.3) 100%);
+$gradient-card-light: linear-gradient(135deg, rgba($color-bg-light-card, 0.9) 0%, rgba($color-bg-light-card, 0.6) 100%);
 
 // Typography
 $font-body: 'Inter', sans-serif;

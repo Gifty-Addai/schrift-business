@@ -19,15 +19,15 @@ export const Logo = ({ variant = 'dark' }: LogoProps) => {
                     <path d="M18 9C13.5 6.5 10 13 16 16C22 19 18.5 25.5 14 23" stroke="url(#paint2_linear)" strokeWidth="2.5" strokeLinecap="round" />
                     <defs>
                         <linearGradient id="paint0_linear" x1="4" y1="8" x2="10" y2="24" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#8B5CF6" />
-                            <stop offset="1" stopColor="#6366F1" />
+                            <stop stopColor="#FF7A00" />
+                            <stop offset="1" stopColor="#FF9F43" />
                         </linearGradient>
                         <linearGradient id="paint1_linear" x1="22" y1="8" x2="28" y2="24" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#6366F1" />
-                            <stop offset="1" stopColor="#3B82F6" />
+                            <stop stopColor="#8B5CF6" />
+                            <stop offset="1" stopColor="#A78BFA" />
                         </linearGradient>
                         <linearGradient id="paint2_linear" x1="14" y1="26" x2="18" y2="6" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#EC4899" />
+                            <stop stopColor="#FF7A00" />
                             <stop offset="1" stopColor="#8B5CF6" />
                         </linearGradient>
                     </defs>
