@@ -4,6 +4,11 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import type { ContactFormData } from '../../types';
 
+// Endpoint: Cloudflare Pages Function at /api/contact
+// The Web3Forms API key is stored as a secret binding in Cloudflare Pages,
+// never exposed to the browser.
+const API_ENDPOINT = '/api/contact';
+
 export const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -20,60 +25,30 @@ export const Contact = () => {
         setIsLoading(true);
         setSubmitError(null);
 
-        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-
-        if (!accessKey) {
-            // Simulated submission in development/demo when key is absent
-            console.log('Form submitted (Simulated):', data);
-            console.warn(
-                "Contact Form Submitted! [Simulated]\n" +
-                "To receive actual emails on form submission, get a free Access Key from Web3Forms (https://web3forms.com) and add 'VITE_WEB3FORMS_ACCESS_KEY=your_key' to your .env file."
-            );
-            
-            // Mock network delay for UX
-            await new Promise((resolve) => setTimeout(resolve, 800));
-            setIsSubmitted(true);
-            reset();
-            setIsLoading(false);
-
-            setTimeout(() => {
-                setIsSubmitted(false);
-            }, 5000);
-            return;
-        }
-
         try {
-            const response = await fetch('https://api.web3forms.com/submit', {
+            const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    access_key: accessKey,
                     name: data.name,
                     email: data.email,
-                    subject: `New SchriftFlow Inquiry from ${data.name}`,
-                    project_type: data.project || 'General Software Inquiry',
+                    project: data.project,
                     message: data.message,
-                    from_name: 'SchriftFlow Contact Form'
-                })
+                }),
             });
 
-            const result = await response.json();
+            const result = await response.json() as { success: boolean; message?: string };
+
             if (result.success) {
                 setIsSubmitted(true);
                 reset();
-                setTimeout(() => {
-                    setIsSubmitted(false);
-                }, 5000);
+                setTimeout(() => setIsSubmitted(false), 5000);
             } else {
-                console.error('Web3Forms Error:', result);
-                setSubmitError(result.message || 'Failed to submit form. Please try emailing directly.');
+                setSubmitError(result.message || 'Submission failed. Please try emailing directly.');
             }
         } catch (err) {
-            console.error('Form submission network error:', err);
-            setSubmitError('Network error occurred. Please check your connection or email directly.');
+            console.error('Contact form error:', err);
+            setSubmitError('Network error. Please check your connection or email us directly.');
         } finally {
             setIsLoading(false);
         }
