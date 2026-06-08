@@ -1,3 +1,5 @@
+/// <reference types="@cloudflare/workers-types" />
+
 interface Env {
     WEB3FORMS_ACCESS_KEY: string;
 }
