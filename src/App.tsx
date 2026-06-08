@@ -7,7 +7,7 @@ import { TechStack } from './components/sections/TechStack';
 import { Process } from './components/sections/Process';
 import { Projects } from './components/sections/Projects';
 import { Team } from './components/sections/Team';
-import { Blog } from './components/sections/Blog';
+// import { Blog } from './components/sections/Blog';
 import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
 
@@ -42,8 +42,8 @@ function App() {
       {/* Marquee Separator */}
       <Marquee />
 
-      {/* 7. Blog Insights Section (Dark) */}
-      <Blog />
+      {/* 7. Blog Insights Section (Dark) — commented out for now */}
+      {/* <Blog /> */}
 
       {/* 8. Testimonials Section (Dark) */}
       <Testimonials />

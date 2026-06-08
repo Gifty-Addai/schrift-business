@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Logo } from '../ui/Logo';
 import type { NavItem } from '../../types';
@@ -9,13 +9,15 @@ const navItems: NavItem[] = [
     { label: 'Timeline', href: '#process' },
     { label: 'Portfolio', href: '#projects' },
     { label: 'Team', href: '#team' },
-    { label: 'Blog', href: '#blog' },
+    // { label: 'Blog', href: '#blog' }, // commented out for now
     { label: 'Feedback', href: '#testimonials' },
 ];
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+
+    const menuRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,6 +27,22 @@ export const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Close menu when tapping outside
+    useEffect(() => {
+        if (!isMenuOpen) return;
+        const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+            if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+                setIsMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleOutsideClick);
+        document.addEventListener('touchstart', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+            document.removeEventListener('touchstart', handleOutsideClick);
+        };
+    }, [isMenuOpen]);
 
     const scrollToSection = (href: string) => {
         const element = document.querySelector(href);
@@ -44,6 +62,7 @@ export const Header = () => {
 
     return (
         <motion.header
+        ref={menuRef}
             className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-white/5 rounded-full transition-all duration-300 shadow-lg ${
                 isScrolled ? 'bg-slate-950/85 border-violet-500/20 shadow-2xl py-1' : 'bg-slate-950/45'
             }`}

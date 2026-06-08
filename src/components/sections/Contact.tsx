@@ -94,8 +94,8 @@ export const Contact = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Call Us</span>
-                                    <a href="tel:+233247413964" className="text-base font-bold text-white transition-colors duration-200 hover:text-violet-400">
-                                        +233 24 741 3964
+                                    <a href="tel:+233209951262" className="text-base font-bold text-white transition-colors duration-200 hover:text-violet-400">
+                                        +233 20 995 1262
                                     </a>
                                 </div>
                             </div>
@@ -186,8 +186,8 @@ export const Contact = () => {
                                 {errors.message && <p className="text-red-500 text-xs mt-1 font-medium">{errors.message.message}</p>}
                             </div>
 
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 disabled={isLoading}
                                 className="w-full py-3 mt-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-heading text-base font-semibold rounded-full shadow-[0_4px_15px_rgba(139,92,246,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(139,92,246,0.5)] active:translate-y-0 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             >
