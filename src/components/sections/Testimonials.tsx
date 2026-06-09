@@ -39,7 +39,7 @@ export const Testimonials = () => {
                     Feedback
                 </span>
                 <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white text-center leading-tight mb-4">
-                    Testimonials That Speak to <span className="text-gradient">My Results</span>
+                    Testimonials That Speak to <span className="text-gradient">Our Results</span>
                 </h2>
                 <p className="text-slate-400 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
                     Here is what clients and partners say about working with SchriftFlow

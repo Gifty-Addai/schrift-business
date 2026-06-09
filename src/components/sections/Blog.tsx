@@ -71,7 +71,7 @@ export const Blog = () => {
                     Latest Insights
                 </span>
                 <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white text-center leading-tight mb-4">
-                    From my <span className="text-gradient">blog post</span>
+                    From our <span className="text-gradient">blog post</span>
                 </h2>
                 <p className="text-slate-400 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
                     Sharing knowledge, experiences, and technical guides about modern software engineering
