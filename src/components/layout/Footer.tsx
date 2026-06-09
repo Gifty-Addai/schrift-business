@@ -52,7 +52,7 @@ export const Footer = () => {
             <div className="border-b border-white/5 py-12">
                 <div className="container flex justify-between items-center flex-wrap gap-6 sm:justify-center sm:text-center">
                     <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white">Lets Connect there</h2>
-                    <button 
+                    <button
                         className="font-heading font-semibold text-white px-7 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] flex items-center gap-1.5 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                         onClick={() => scrollToSection('#contact')}
                     >
@@ -133,7 +133,7 @@ export const Footer = () => {
             <div className="border-t border-white/5 py-6 bg-black/20">
                 <div className="container flex justify-between items-center flex-wrap gap-4 sm:justify-center sm:text-center">
                     <p className="text-slate-400 text-xs">
-                        &copy; 2026 SchriftFlow. All rights reserved. Blended Layout Theme.
+                        &copy; 2026 SchriftFlow. All rights reserved.
                     </p>
                     <div className="flex gap-6">
                         <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-slate-400 text-xs font-semibold cursor-pointer hover:text-violet-400 transition-colors">

@@ -4,3 +4,10 @@ main = "src/worker.ts"
 
 [assets]
 directory = "./dist"
+
+# Non-sensitive runtime variables — baked into every deployment
+# Sensitive secrets (WEB3FORMS_ACCESS_KEY) must be set in the Cloudflare
+# dashboard under Workers → Settings → Variables → Secrets (encrypted).
+# Secrets are NEVER put here.
+[vars]
+TEAM_MEMBERS = '[{"name":"Frank Addai","role":"Founder & Software Engineer","initials":"FA","accent":"#8B5CF6","grad":"from-violet-600 to-indigo-500","badgeBg":"bg-violet-500/10 text-violet-400 border-violet-500/20","tag":"Engineering"},{"name":"Ransford Owusu","role":"Co-Founder & Business Strategist","initials":"RO","accent":"#A78BFA","grad":"from-violet-400 to-purple-600","badgeBg":"bg-purple-500/10 text-purple-400 border-purple-500/20","tag":"Strategy"},{"name":"Gabriel Afri-Sika Asante","role":"Electrical & Electronics Engineer","initials":"GA","accent":"#F59E0B","grad":"from-amber-500 to-orange-500","badgeBg":"bg-amber-500/10 text-amber-400 border-amber-500/20","tag":"Electrical"}]'
