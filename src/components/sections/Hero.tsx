@@ -16,7 +16,7 @@ export const Hero = () => {
         <section id="home" className="min-h-screen relative bg-slate-900 overflow-hidden pt-36 pb-16 flex flex-col justify-center">
             {/* Ambient background glow */}
             <div className="absolute -top-1/10 -right-1/10 w-3/5 h-3/5 bg-[radial-gradient(circle,rgba(139,92,246,0.12)_0%,rgba(59,130,246,0.04)_50%,transparent_100%)] pointer-events-none z-10 filter blur-[80px]"></div>
-            
+
             <div className="container">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 items-center relative z-20 mb-12 text-center lg:text-left">
                     {/* Left Column: Text & CTA */}
@@ -29,18 +29,21 @@ export const Hero = () => {
                         <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold leading-none text-slate-50 mb-6 tracking-tight">
                             Crafting Digital<br />
                             Brilliance<span className="text-violet-500">.</span>
+                            <span className="block text-slate-400 text-lg sm:text-2xl font-normal tracking-wide mt-4">
+                                Premium Software Development & IoT Solutions in Ghana
+                            </span>
                         </h1>
                         <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
                             We design and build premium, high-performance software solutions.
                             From web platforms to elegant mobile apps, we bring your digital vision to life.
                         </p>
-                        
+
                         <div className="flex gap-4">
-                            <button 
+                            <button
                                 className="group font-heading font-semibold text-white text-base sm:text-lg flex items-center gap-4 pl-6 pr-1 py-1 border border-white/15 rounded-full hover:border-violet-500 hover:bg-violet-500/5 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                                 onClick={scrollToContact}
                             >
-                                Let's Talk 
+                                Let's Talk
                                 <span className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-violet-600 group-hover:rotate-[-45deg] shrink-0">
                                     <FaArrowRight size={14} />
                                 </span>
@@ -58,7 +61,7 @@ export const Hero = () => {
                         <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] bg-violet-500/5 border border-dashed border-violet-500/30 rounded-full relative flex items-center justify-center p-4">
                             {/* Inner circle border and glow */}
                             <div className="absolute inset-2.5 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] shadow-[0_0_30px_rgba(139,92,246,0.1)] pointer-events-none"></div>
-                            
+
                             {/* Portrait Image Placeholder (SVG Fallback) */}
                             <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-slate-900/80 border border-white/10">
                                 <svg className="w-full h-full object-cover" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
