@@ -6,7 +6,7 @@ import { Services } from './components/sections/Services';
 import { TechStack } from './components/sections/TechStack';
 import { Process } from './components/sections/Process';
 import { Projects } from './components/sections/Projects';
-import { Team } from './components/sections/Team';
+// import { Team } from './components/sections/Team';
 // import { Blog } from './components/sections/Blog';
 import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
@@ -37,7 +37,7 @@ function App() {
       <Projects />
 
       {/* 6. Creative Team Section (Light Cream) */}
-      <Team />
+      {/* <Team /> */}
 
       {/* Marquee Separator */}
       <Marquee />
