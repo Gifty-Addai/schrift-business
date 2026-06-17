@@ -37,7 +37,7 @@ function App() {
       <Projects />
 
       {/* 6. Creative Team Section (Light Cream) */}
-      <Team />
+    {/*  <Team /> */}
 
       {/* Marquee Separator */}
       <Marquee />
