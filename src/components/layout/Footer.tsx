@@ -8,7 +8,7 @@ const footerLinks = {
         { label: 'Services', href: '#services' },
         { label: 'Timeline', href: '#process' },
         { label: 'Portfolio', href: '#projects' },
-        { label: 'Team', href: '#team' },
+        // { label: 'Team', href: '#team' },
     ],
     services: [
         { label: 'Web Development', href: '#services' },
