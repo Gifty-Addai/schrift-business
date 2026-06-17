@@ -8,7 +8,7 @@ const navItems: NavItem[] = [
     { label: 'Services', href: '#services' },
     { label: 'Timeline', href: '#process' },
     { label: 'Portfolio', href: '#projects' },
-    { label: 'Team', href: '#team' },
+    // { label: 'Team', href: '#team' },
     // { label: 'Blog', href: '#blog' }, // commented out for now
     { label: 'Feedback', href: '#testimonials' },
 ];
@@ -62,10 +62,9 @@ export const Header = () => {
 
     return (
         <motion.header
-        ref={menuRef}
-            className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-white/5 rounded-full transition-all duration-300 shadow-lg ${
-                isScrolled ? 'bg-slate-950/85 border-violet-500/20 shadow-2xl py-1' : 'bg-slate-950/45'
-            }`}
+            ref={menuRef}
+            className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-white/5 rounded-full transition-all duration-300 shadow-lg ${isScrolled ? 'bg-slate-950/85 border-violet-500/20 shadow-2xl py-1' : 'bg-slate-950/45'
+                }`}
             initial={{ y: -100, x: '-50%' }}
             animate={{ y: 0, x: '-50%' }}
             transition={{ duration: 0.5 }}
@@ -75,9 +74,8 @@ export const Header = () => {
                     <Logo />
                 </div>
 
-                <ul className={`hidden md:flex items-center gap-8 list-none ${
-                    isMenuOpen ? '!flex absolute top-[calc(100%+10px)] left-0 right-0 flex-col bg-slate-900/95 backdrop-blur-lg border border-white/8 rounded-2xl shadow-2xl p-6 gap-4' : ''
-                }`}>
+                <ul className={`hidden md:flex items-center gap-8 list-none ${isMenuOpen ? '!flex absolute top-[calc(100%+10px)] left-0 right-0 flex-col bg-slate-900/95 backdrop-blur-lg border border-white/8 rounded-2xl shadow-2xl p-6 gap-4' : ''
+                    }`}>
                     {navItems.map((item, index) => (
                         <motion.li
                             key={item.href}
@@ -98,7 +96,7 @@ export const Header = () => {
                 </ul>
 
                 <div className="flex items-center gap-4">
-                    <button 
+                    <button
                         className="font-heading font-semibold text-white px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer hidden sm:block"
                         onClick={() => scrollToSection('#contact')}
                     >
