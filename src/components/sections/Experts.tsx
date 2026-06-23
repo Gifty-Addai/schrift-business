@@ -33,7 +33,7 @@ const capabilities = [
 ];
 
 const pills = [
-    { value: '99%+', label: 'Customer Satisfaction' },
+    { value: '98%', label: 'Customer Satisfaction' },
     { value: '24/7', label: 'Dedicated Support' },
     { value: '5+', label: 'Years Experience' },
     { value: '95%+', label: 'Repeat Business' }

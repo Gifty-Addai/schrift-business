@@ -124,7 +124,7 @@ export const Hero = () => {
                         <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Happy Clients</p>
                     </div>
                     <div className="text-center">
-                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">100%</h2>
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-400 leading-none mb-1">98%</h2>
                         <p className="text-slate-300 text-xs sm:text-sm font-medium uppercase tracking-wider">Client Satisfaction</p>
                     </div>
                 </motion.div>
