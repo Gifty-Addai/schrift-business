@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import type { ContactFormData } from '../../types';
 
 // Endpoint: Cloudflare Pages Function at /api/contact
@@ -111,14 +111,14 @@ export const Contact = () => {
                         </div>
 
                         {/* Social Links */}
-                        <div className="flex gap-3">
+                        {/* <div className="flex gap-3">
                             <a href="https://github.com/Frank732" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center shadow-sm transition-all duration-300 hover:text-white hover:bg-violet-600 hover:border-violet-600 hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgba(139,92,246,0.2)]">
                                 <FaGithub size={20} />
                             </a>
                             <a href="https://www.linkedin.com/in/frankaddai/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center shadow-sm transition-all duration-300 hover:text-white hover:bg-violet-600 hover:border-violet-600 hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgba(139,92,246,0.2)]">
                                 <FaLinkedin size={20} />
                             </a>
-                        </div>
+                        </div> */}
                     </motion.div>
 
                     {/* Right Column: Interactive Form */}

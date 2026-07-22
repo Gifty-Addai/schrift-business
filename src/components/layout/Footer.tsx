@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane } from 'react-icons/fa';
 import { Logo } from '../ui/Logo';
 
 const footerLinks = {
@@ -70,14 +70,14 @@ export const Footer = () => {
                     <p className="text-slate-600 text-sm leading-relaxed">
                         Crafting digital brilliance with clean code, elegant designs, and enterprise-grade architecture.
                     </p>
-                    <div className="flex gap-2">
+                    {/* <div className="flex gap-2">
                         <a href="https://github.com/Frank732" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-slate-200/60 border border-slate-200 text-slate-600 flex items-center justify-center transition-all duration-300 hover:bg-violet-600 hover:border-violet-600 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(139,92,246,0.3)]" aria-label="GitHub">
                             <FaGithub size={18} />
                         </a>
                         <a href="https://www.linkedin.com/in/frankaddai/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-slate-200/60 border border-slate-200 text-slate-600 flex items-center justify-center transition-all duration-300 hover:bg-violet-600 hover:border-violet-600 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(139,92,246,0.3)]" aria-label="LinkedIn">
                             <FaLinkedin size={18} />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Quick Links Column */}
