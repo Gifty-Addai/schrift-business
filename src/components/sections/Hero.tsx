@@ -96,7 +96,7 @@ export const Hero = () => {
                                 ))}
                             </div>
                             <div className="flex flex-col">
-                                <strong className="text-slate-900 text-xs font-bold">50+ Projects</strong>
+                                <strong className="text-slate-900 text-xs font-bold">15+ Projects</strong>
                                 <span className="text-slate-500 text-[10px]">Delivered Worldwide</span>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ export const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <div className="text-center">
-                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-600 leading-none mb-1">50+</h2>
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-600 leading-none mb-1">15+</h2>
                         <p className="text-slate-600 text-xs sm:text-sm font-medium uppercase tracking-wider">Project Deliveries</p>
                     </div>
                     <div className="text-center">
@@ -119,7 +119,7 @@ export const Hero = () => {
                         <p className="text-slate-600 text-xs sm:text-sm font-medium uppercase tracking-wider">Years Experience</p>
                     </div>
                     <div className="text-center">
-                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-600 leading-none mb-1">30+</h2>
+                        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-violet-600 leading-none mb-1">10+</h2>
                         <p className="text-slate-600 text-xs sm:text-sm font-medium uppercase tracking-wider">Happy Clients</p>
                     </div>
                     <div className="text-center">
