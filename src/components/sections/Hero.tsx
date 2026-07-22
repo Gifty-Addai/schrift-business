@@ -30,7 +30,7 @@ export const Hero = () => {
                             Crafting Digital<br />
                             Brilliance<span className="text-violet-500">.</span>
                             <span className="block text-slate-500 text-lg sm:text-2xl font-normal tracking-wide mt-4">
-                                Premium Software Engineering & IoT Solutions in Ghana
+                                Premium Software Engineering & IoT Solutions
                             </span>
                         </h1>
                         <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
