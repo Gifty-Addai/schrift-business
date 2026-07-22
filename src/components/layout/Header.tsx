@@ -63,7 +63,7 @@ export const Header = () => {
     return (
         <motion.header
             ref={menuRef}
-            className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-white/5 rounded-full transition-all duration-300 shadow-lg ${isScrolled ? 'bg-slate-950/85 border-violet-500/20 shadow-2xl py-1' : 'bg-slate-950/45'
+            className={`fixed top-4 left-1/2 z-50 w-11/12 max-w-7xl backdrop-blur-md border border-slate-200/50 rounded-full transition-all duration-300 shadow-sm ${isScrolled ? 'bg-white/85 border-slate-200 shadow py-1' : 'bg-white/45'
                 }`}
             initial={{ y: -100, x: '-50%' }}
             animate={{ y: 0, x: '-50%' }}
@@ -71,10 +71,10 @@ export const Header = () => {
         >
             <nav className="flex items-center justify-between py-2 px-6 w-full">
                 <div onClick={() => scrollToSection('#home')} className="cursor-pointer flex items-center">
-                    <Logo />
+                    <Logo variant="light" />
                 </div>
 
-                <ul className={`hidden md:flex items-center gap-8 list-none ${isMenuOpen ? '!flex absolute top-[calc(100%+10px)] left-0 right-0 flex-col bg-slate-900/95 backdrop-blur-lg border border-white/8 rounded-2xl shadow-2xl p-6 gap-4' : ''
+                <ul className={`hidden md:flex items-center gap-8 list-none ${isMenuOpen ? '!flex absolute top-[calc(100%+10px)] left-0 right-0 flex-col bg-white/95 backdrop-blur-lg border border-slate-200 rounded-2xl shadow-xl p-6 gap-4' : ''
                     }`}>
                     {navItems.map((item, index) => (
                         <motion.li
@@ -85,7 +85,7 @@ export const Header = () => {
                             className="w-full md:w-auto text-center"
                         >
                             <a
-                                className="text-slate-200 text-sm font-medium hover:text-violet-400 transition-colors cursor-pointer py-1 relative group block md:inline-block
+                                className="text-slate-700 text-sm font-medium hover:text-violet-600 transition-colors cursor-pointer py-1 relative group block md:inline-block
                                 after:absolute after:bottom-[-4px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-violet-500 after:to-indigo-500 hover:after:w-full after:transition-all after:duration-300"
                                 onClick={() => scrollToSection(item.href)}
                             >
@@ -107,9 +107,9 @@ export const Header = () => {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
-                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? 'opacity-0' : ''}`} />
-                        <span className={`block w-5 h-[2px] bg-slate-100 transition-all rounded ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                        <span className={`block w-5 h-[2px] bg-slate-800 transition-all rounded ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                        <span className={`block w-5 h-[2px] bg-slate-800 transition-all rounded ${isMenuOpen ? 'opacity-0' : ''}`} />
+                        <span className={`block w-5 h-[2px] bg-slate-800 transition-all rounded ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
                     </button>
                 </div>
             </nav>

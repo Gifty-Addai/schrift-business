@@ -37,10 +37,10 @@ const iconMap: Record<string, JSX.Element> = {
 
 export const TechStack = () => {
     return (
-        <section id="tech" className="bg-slate-950 text-slate-50 py-16 md:py-24 relative border-b border-white/5 [perspective:1000px]">
+        <section id="tech" className="bg-white text-slate-800 py-16 md:py-24 relative border-b border-slate-200/50 [perspective:1000px]">
             <div className="container">
-                <h2 className="text-center font-heading text-3xl sm:text-5xl font-bold text-white mb-4">Technology Stack</h2>
-                <p className="text-center text-slate-400 text-sm max-w-xl mx-auto mb-16 leading-relaxed">
+                <h2 className="text-center font-heading text-3xl sm:text-5xl font-bold text-slate-900 mb-4">Technology Stack</h2>
+                <p className="text-center text-slate-500 text-sm max-w-xl mx-auto mb-16 leading-relaxed">
                     Leveraging cutting-edge technologies to build modern solutions
                 </p>
 
@@ -48,23 +48,23 @@ export const TechStack = () => {
                     {technologiesData.map((tech, index) => (
                         <motion.div
                             key={tech.id}
-                            className="group flex flex-col items-center justify-center gap-4 p-6 rounded-2xl bg-slate-800/40 border border-white/5 transition-all duration-500 [transform-style:preserve-3d] cursor-pointer relative backdrop-blur-md shadow-lg hover:bg-slate-800/60 hover:border-[var(--tech-color)] hover:shadow-[0_20px_30px_-10px_var(--shadow-color)] hover:-translate-y-2.5 hover:[transform:rotateX(10deg)_scale(1.1)]"
+                            className="group flex flex-col items-center justify-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-200/60 transition-all duration-500 [transform-style:preserve-3d] cursor-pointer relative backdrop-blur-md shadow-sm hover:bg-white hover:border-[var(--tech-color)] hover:shadow-[0_20px_30px_-10px_var(--shadow-color)] hover:-translate-y-2.5 hover:[transform:rotateX(10deg)_scale(1.1)]"
                             initial={{ opacity: 0, scale: 0.8, rotateX: -15 }}
                             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
                             viewport={{ once: true, margin: '-50px' }}
                             transition={{ duration: 0.4, delay: index * 0.05 }}
                             style={{
                                 '--tech-color': tech.color,
-                                '--shadow-color': `${tech.color}66`
+                                '--shadow-color': `${tech.color}44`
                             } as React.CSSProperties}
                         >
                             <div className="relative transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:translateZ(40px)_scale(1.1)]">
-                                <div className="filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]" style={{ color: tech.color }}>
+                                <div className="filter drop-shadow-[0_4px_6px_rgba(15,23,42,0.1)]" style={{ color: tech.color }}>
                                     {iconMap[tech.icon]}
                                 </div>
                                 <div className="absolute top-full left-0 right-0 h-5 rounded-full opacity-0 filter blur-md transition-all duration-500 z-[-1] group-hover:opacity-40 group-hover:translate-y-2.5 group-hover:scale-75" style={{ background: tech.color }}></div>
                             </div>
-                            <span className="font-semibold text-slate-300 text-sm md:text-base transition-all duration-500 group-hover:text-[var(--tech-color)] group-hover:[transform:translateZ(20px)]">{tech.name}</span>
+                            <span className="font-semibold text-slate-650 text-sm md:text-base transition-all duration-500 group-hover:text-[var(--tech-color)] group-hover:[transform:translateZ(20px)]">{tech.name}</span>
                         </motion.div>
                     ))}
                 </div>

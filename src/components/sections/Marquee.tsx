@@ -12,7 +12,7 @@ const marqueeItems = [
 
 export const Marquee = () => {
     return (
-        <div className="overflow-hidden py-4 flex select-none border-t border-b border-white/5 relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-violet-600">
+        <div className="overflow-hidden py-4 flex select-none border-t border-b border-violet-700/20 relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-violet-600">
             <div className="flex w-max animate-marquee-scroll">
                 {/* Loop twice for perfect wrap around scrolling */}
                 {[...Array(2)].map((_, groupIndex) => (

@@ -14,7 +14,7 @@ interface CardProps {
 export const Card = ({ icon, title, description, children, delay = 0, className = '', style }: CardProps) => {
     return (
         <motion.div
-            className={`glass-card-dark rounded-2xl p-6 relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 group ${className}`}
+            className={`glass-card-light rounded-2xl p-6 relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 group ${className}`}
             style={style}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -25,9 +25,9 @@ export const Card = ({ icon, title, description, children, delay = 0, className 
             {/* Top accent line that animates on hover */}
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-500 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
             
-            {icon && <div className="text-violet-400 mb-4 inline-block">{icon}</div>}
-            {title && <h3 className="font-heading text-xl font-bold text-white mb-2">{title}</h3>}
-            {description && <p className="text-slate-300 text-sm leading-relaxed mb-0">{description}</p>}
+            {icon && <div className="text-violet-600 mb-4 inline-block">{icon}</div>}
+            {title && <h3 className="font-heading text-xl font-bold text-slate-900 mb-2">{title}</h3>}
+            {description && <p className="text-slate-600 text-sm leading-relaxed mb-0">{description}</p>}
             {children}
         </motion.div>
     );

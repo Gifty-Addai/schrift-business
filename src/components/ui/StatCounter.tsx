@@ -34,10 +34,10 @@ export const StatCounter = ({ value, label, suffix = '', duration = 2 }: StatCou
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
         >
-            <span className="font-heading text-4xl sm:text-5xl font-bold text-violet-400 mb-2">
+            <span className="font-heading text-4xl sm:text-5xl font-bold text-violet-600 mb-2">
                 {displayValue}{suffix}
             </span>
-            <span className="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">{label}</span>
+            <span className="text-slate-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">{label}</span>
         </motion.div>
     );
 };

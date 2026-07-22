@@ -30,24 +30,24 @@ const steps = [
 
 export const Process = () => {
     return (
-        <section id="process" className="bg-slate-900 text-slate-100 py-16 md:py-24 relative border-b border-white/5">
+        <section id="process" className="bg-slate-50 text-slate-800 py-16 md:py-24 relative border-b border-slate-200/50">
             <div className="container">
-                <span className="font-heading text-sm font-semibold text-violet-400 uppercase tracking-widest text-center mb-3 block">
+                <span className="font-heading text-sm font-semibold text-violet-600 uppercase tracking-widest text-center mb-3 block">
                     How We Work
                 </span>
-                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white text-center leading-tight mb-4">
+                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-900 text-center leading-tight mb-4">
                     Our Redesigned <span className="text-gradient">Workflow</span>
                 </h2>
-                <p className="text-slate-400 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
+                <p className="text-slate-500 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
                     A structured, agile development process tailored for transparency and high-speed execution
                 </p>
 
                 <div className="relative mt-12 py-4">
                     {/* Horizontal connector line (desktop only) */}
-                    <div className="hidden md:block absolute top-[34px] left-[10%] right-[10%] h-[2px] bg-[repeating-linear-gradient(to_right,#a78bfa_0,#a78bfa_8px,transparent_8px,transparent_16px)] z-10 opacity-30"></div>
+                    <div className="hidden md:block absolute top-[34px] left-[10%] right-[10%] h-[2px] bg-[repeating-linear-gradient(to_right,#8B5CF6_0,#8B5CF6_8px,transparent_8px,transparent_16px)] z-10 opacity-30"></div>
 
                     {/* Vertical connector line (mobile only) */}
-                    <div className="md:hidden absolute top-0 bottom-0 left-[30px] w-[2px] bg-[repeating-linear-gradient(to_bottom,#a78bfa_0,#a78bfa_8px,transparent_8px,transparent_16px)] z-10 opacity-30"></div>
+                    <div className="md:hidden absolute top-0 bottom-0 left-[30px] w-[2px] bg-[repeating-linear-gradient(to_bottom,#8B5CF6_0,#8B5CF6_8px,transparent_8px,transparent_16px)] z-10 opacity-30"></div>
 
                     <div className="flex flex-col md:flex-row md:justify-between gap-8 md:gap-6 relative z-20">
                         {steps.map((step, index) => (
@@ -60,17 +60,17 @@ export const Process = () => {
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                             >
                                 <div className="relative z-30">
-                                    <div className="w-[60px] h-[60px] rounded-full bg-slate-800 border-[3px] border-violet-400 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] group-hover:scale-110">
-                                        <span className="font-heading text-lg font-bold text-violet-400 transition-colors duration-300 group-hover:text-white">
+                                    <div className="w-[60px] h-[60px] rounded-full bg-white border-[3px] border-violet-600 flex items-center justify-center shadow-md transition-all duration-300 group-hover:bg-violet-600 group-hover:border-violet-600 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] group-hover:scale-110">
+                                        <span className="font-heading text-lg font-bold text-violet-600 transition-colors duration-300 group-hover:text-white">
                                             {step.num}
                                         </span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col pt-2 md:pt-0">
-                                    <h3 className="font-heading text-lg font-bold text-white mb-2 transition-colors duration-300 group-hover:text-violet-400">
+                                    <h3 className="font-heading text-lg font-bold text-slate-900 mb-2 transition-colors duration-300 group-hover:text-violet-600">
                                         {step.title}
                                     </h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
+                                    <p className="text-slate-600 text-sm leading-relaxed">
                                         {step.desc}
                                     </p>
                                 </div>
